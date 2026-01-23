@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Building2 } from "lucide-react";
+import { useGetStartedModal } from "@/hooks/use-get-started-modal";
 
 export function Hero() {
+  const { open: openGetStartedModal } = useGetStartedModal();
   return (
     <section className="relative min-h-[90vh] flex items-center hero-gradient overflow-hidden">
       {/* Background Pattern */}
@@ -61,13 +63,11 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <Button asChild variant="cta" size="lg" className="group">
-              <Link to="/contact">
-                Request Consultation
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
+            <Button variant="cta" size="lg" className="group" onClick={openGetStartedModal}>
+              Request Consultation
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button asChild variant="outline" size="lg" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+            <Button asChild variant="outline" size="lg" className="border-primary-foreground/50 text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20">
               <Link to="/services">Explore Services</Link>
             </Button>
           </motion.div>

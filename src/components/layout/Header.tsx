@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useGetStartedModal } from "@/hooks/use-get-started-modal";
 
 const services = [
   { name: "Due Diligence", slug: "due-diligence" },
@@ -16,6 +17,7 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const location = useLocation();
+  const { open: openGetStartedModal } = useGetStartedModal();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -105,8 +107,8 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Button asChild variant="cta">
-              <Link to="/contact">Get Started</Link>
+            <Button variant="cta" onClick={openGetStartedModal}>
+              Get Started
             </Button>
           </div>
 
@@ -161,10 +163,15 @@ export function Header() {
               >
                 Contact
               </Link>
-              <Button asChild variant="cta" className="w-full mt-2">
-                <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
-                  Get Started
-                </Link>
+              <Button
+                variant="cta"
+                className="w-full mt-2"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  openGetStartedModal();
+                }}
+              >
+                Get Started
               </Button>
             </div>
           </div>
