@@ -7,21 +7,14 @@ import { useGetStartedModal } from "@/hooks/use-get-started-modal";
 export function Hero() {
   const { open: openGetStartedModal } = useGetStartedModal();
   return (
-    <section className="relative min-h-[90vh] flex items-center hero-gradient overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
-            backgroundSize: "40px 40px",
-          }}
-        />
-      </div>
-
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-navy-dark/80 via-transparent to-teal/10" />
-
+    <section 
+      className="relative min-h-[90vh] flex items-center overflow-hidden"
+      style={{
+        backgroundImage: `linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
       <div className="container-narrow mx-auto section-padding relative z-10">
         <div className="max-w-4xl">
           <motion.div
@@ -40,7 +33,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-tight mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6"
           >
             Fiscal Stewards of Your{" "}
             <span className="text-gradient">Roofing Assets</span>
@@ -50,7 +43,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8"
+            className="text-lg md:text-xl text-gray-300 max-w-2xl mb-8"
           >
             We protect over $3 billion in commercial roofing assets for institutional investors,
             REITs, and property managers across the nation. Data-driven insights. Trusted
@@ -67,7 +60,7 @@ export function Hero() {
               Request Consultation
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button asChild variant="outline" size="lg" className="border-primary-foreground/50 text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20">
+            <Button asChild variant="outline" size="lg" className="border-white/30 text-white bg-white/10 hover:bg-white/20">
               <Link to="/services">Explore Services</Link>
             </Button>
           </motion.div>
@@ -77,15 +70,15 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-wrap gap-8 mt-12 pt-12 border-t border-primary-foreground/10"
+            className="flex flex-wrap gap-8 mt-12 pt-12 border-t border-white/10"
           >
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center">
                 <Shield className="w-6 h-6 text-accent" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-primary-foreground">$3B+</p>
-                <p className="text-sm text-muted-foreground">Assets Protected</p>
+                <p className="text-2xl font-bold text-white">$3B+</p>
+                <p className="text-sm text-gray-400">Assets Protected</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -93,8 +86,8 @@ export function Hero() {
                 <Building2 className="w-6 h-6 text-accent" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-primary-foreground">4,600+</p>
-                <p className="text-sm text-muted-foreground">Roofs Managed</p>
+                <p className="text-2xl font-bold text-white">4,600+</p>
+                <p className="text-sm text-gray-400">Roofs Managed</p>
               </div>
             </div>
           </motion.div>

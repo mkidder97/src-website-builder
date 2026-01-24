@@ -2,16 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import {
-  FileSearch,
-  ClipboardList,
-  Calendar,
-  CloudLightning,
-  ArrowRight,
-  CheckCircle,
-  HardHat,
-  Star,
-} from "lucide-react";
+import { ArrowRight, CheckCircle, Star } from "lucide-react";
 
 const services = [
   {
@@ -19,7 +10,7 @@ const services = [
     title: "Construction Management",
     description:
       "Full-service oversight of commercial roofing projects from bidding through final inspection. We act as your advocate throughout the entire process, ensuring quality workmanship and competitive pricing.",
-    icon: HardHat,
+    imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
     features: [
       "Pre-construction meetings and planning",
       "Contractor bidding and selection",
@@ -35,7 +26,7 @@ const services = [
     title: "Due Diligence Inspections",
     description:
       "Comprehensive roof assessments designed for property acquisitions, dispositions, and portfolio analysis. We provide detailed reports that help you make informed investment decisions.",
-    icon: FileSearch,
+    imageUrl: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80",
     features: [
       "Physical condition assessment",
       "Remaining useful life estimation",
@@ -48,7 +39,7 @@ const services = [
     title: "Survey Inspections",
     description:
       "Detailed condition surveys to establish baseline roof performance metrics. Ideal for new property acquisitions or establishing a maintenance baseline.",
-    icon: ClipboardList,
+    imageUrl: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
     features: [
       "Complete roof system documentation",
       "Deficiency identification",
@@ -61,7 +52,7 @@ const services = [
     title: "Annual Inspections",
     description:
       "Routine maintenance inspections designed to maximize roof lifespan and prevent costly emergency repairs. Proactive care for your roofing assets.",
-    icon: Calendar,
+    imageUrl: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
     features: [
       "Bi-annual inspection cycles",
       "Preventive maintenance reports",
@@ -74,7 +65,7 @@ const services = [
     title: "Storm Inspections",
     description:
       "Rapid response assessments after severe weather events. We help document damage for insurance claims and prioritize repairs.",
-    icon: CloudLightning,
+    imageUrl: "https://images.unsplash.com/photo-1527482797697-8795b05a13fe?w=800&q=80",
     features: [
       "24-48 hour response time",
       "Insurance-ready documentation",
@@ -87,9 +78,16 @@ const services = [
 export default function Services() {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="hero-gradient section-padding pt-32">
-        <div className="container-narrow mx-auto">
+      {/* Hero Section with Background Image */}
+      <section 
+        className="relative h-[400px] flex items-center"
+        style={{
+          backgroundImage: `linear-gradient(to right, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75)), url('https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1920&q=80')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="container-narrow mx-auto section-padding">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -99,10 +97,10 @@ export default function Services() {
             <span className="text-accent text-sm font-medium uppercase tracking-wider">
               Our Services
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mt-2 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-6">
               Comprehensive Roof Consulting Solutions
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-gray-300">
               From acquisition due diligence to ongoing maintenance programs, we provide
               institutional-grade roof consulting services tailored to your portfolio needs.
             </p>
@@ -124,8 +122,8 @@ export default function Services() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
                   className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                    index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                  } ${isFeatured ? "p-8 bg-gradient-to-br from-accent/5 to-accent/10 rounded-2xl border border-accent/20" : ""}`}
+                    isFeatured ? "p-8 bg-accent/5 rounded-2xl border border-accent/20" : ""
+                  }`}
                 >
                   <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                     {isFeatured && (
@@ -134,9 +132,6 @@ export default function Services() {
                         FEATURED SERVICE
                       </span>
                     )}
-                    <div className={`w-16 h-16 rounded-xl ${isFeatured ? 'bg-accent/20' : 'bg-accent/10'} flex items-center justify-center mb-6`}>
-                      <service.icon className="w-8 h-8 text-accent" />
-                    </div>
                     <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
                       {service.title}
                     </h2>
@@ -156,12 +151,17 @@ export default function Services() {
                       </Link>
                     </Button>
                   </div>
+                  {/* Photo instead of gradient placeholder */}
                   <div
-                    className={`aspect-square max-h-96 rounded-2xl bg-gradient-to-br ${isFeatured ? 'from-accent/20 to-teal-dark' : 'from-navy to-teal-dark'} flex items-center justify-center ${
+                    className={`aspect-video lg:aspect-square max-h-96 rounded-2xl overflow-hidden ${
                       index % 2 === 1 ? "lg:order-1" : ""
                     }`}
                   >
-                    <service.icon className={`w-24 h-24 ${isFeatured ? 'text-accent/40' : 'text-primary-foreground/20'}`} />
+                    <img 
+                      src={service.imageUrl}
+                      alt={service.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </motion.div>
               );

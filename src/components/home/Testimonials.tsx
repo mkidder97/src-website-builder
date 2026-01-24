@@ -12,7 +12,12 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="bg-warm-gray section-padding">
+    <section 
+      className="section-padding"
+      style={{
+        background: 'linear-gradient(135deg, hsl(222, 47%, 8%) 0%, hsl(222, 47%, 11%) 50%, hsl(222, 47%, 14%) 100%)',
+      }}
+    >
       <div className="container-narrow mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -25,18 +30,18 @@ export function Testimonials() {
           
           {testimonials.map((testimonial, index) => (
             <div key={index}>
-              <blockquote className="text-2xl md:text-3xl lg:text-4xl font-light text-foreground leading-relaxed mb-8">
+              <blockquote className="text-2xl md:text-3xl lg:text-4xl font-light text-white leading-relaxed mb-8">
                 "{testimonial.quote}"
               </blockquote>
               <div className="flex flex-col items-center">
-                <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center mb-4">
-                  <span className="text-primary-foreground font-semibold text-lg">
+                <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mb-4">
+                  <span className="text-accent font-semibold text-lg">
                     {testimonial.author.split(" ").map(n => n[0]).join("")}
                   </span>
                 </div>
                 <cite className="not-italic">
-                  <p className="font-semibold text-foreground">{testimonial.author}</p>
-                  <p className="text-muted-foreground">{testimonial.title}</p>
+                  <p className="font-semibold text-white">{testimonial.author}</p>
+                  <p className="text-gray-400">{testimonial.title}</p>
                 </cite>
               </div>
             </div>
