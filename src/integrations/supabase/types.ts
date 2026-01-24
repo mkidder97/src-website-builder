@@ -80,6 +80,48 @@ export type Database = {
         }
         Relationships: []
       }
+      calculator_leads: {
+        Row: {
+          avg_roof_age: number | null
+          created_at: string | null
+          current_approach: string | null
+          email: string
+          id: string
+          planned_replacements: number | null
+          property_count: number | null
+          roi: number | null
+          total_savings: number | null
+          total_sqft: number | null
+          value_impact: number | null
+        }
+        Insert: {
+          avg_roof_age?: number | null
+          created_at?: string | null
+          current_approach?: string | null
+          email: string
+          id?: string
+          planned_replacements?: number | null
+          property_count?: number | null
+          roi?: number | null
+          total_savings?: number | null
+          total_sqft?: number | null
+          value_impact?: number | null
+        }
+        Update: {
+          avg_roof_age?: number | null
+          created_at?: string | null
+          current_approach?: string | null
+          email?: string
+          id?: string
+          planned_replacements?: number | null
+          property_count?: number | null
+          roi?: number | null
+          total_savings?: number | null
+          total_sqft?: number | null
+          value_impact?: number | null
+        }
+        Relationships: []
+      }
       kpis: {
         Row: {
           created_at: string | null

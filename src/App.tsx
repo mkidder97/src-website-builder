@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { GetStartedModal } from "@/components/GetStartedModal";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
@@ -11,6 +11,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
+import SavingsCalculator from "./pages/SavingsCalculator";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminKPIs from "./pages/admin/AdminKPIs";
@@ -35,6 +36,8 @@ const App = () => (
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/savings-calculator" element={<SavingsCalculator />} />
+          <Route path="/roi-calculator" element={<Navigate to="/savings-calculator" replace />} />
           
           {/* Admin Routes */}
           <Route path="/admin" element={<AdminLayout />}>
