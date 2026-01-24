@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { GetStartedModal } from "@/components/GetStartedModal";
 import { SampleReportsModal } from "@/components/SampleReportsModal";
+import { ChatWidget } from "@/components/chatbot";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
@@ -56,6 +57,7 @@ const App = () => (
         </Routes>
         <GetStartedModal />
         <SampleReportsModal />
+        <ChatWidget />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

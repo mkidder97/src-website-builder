@@ -122,6 +122,54 @@ export type Database = {
         }
         Relationships: []
       }
+      chatbot_leads: {
+        Row: {
+          company: string | null
+          conversation_flow: string | null
+          created_at: string
+          damage_description: string | null
+          email: string
+          id: string
+          is_storm_emergency: boolean | null
+          location_state: string | null
+          name: string
+          phone: string | null
+          portfolio_size: string | null
+          properties_affected: number | null
+          service_interest: string | null
+        }
+        Insert: {
+          company?: string | null
+          conversation_flow?: string | null
+          created_at?: string
+          damage_description?: string | null
+          email: string
+          id?: string
+          is_storm_emergency?: boolean | null
+          location_state?: string | null
+          name: string
+          phone?: string | null
+          portfolio_size?: string | null
+          properties_affected?: number | null
+          service_interest?: string | null
+        }
+        Update: {
+          company?: string | null
+          conversation_flow?: string | null
+          created_at?: string
+          damage_description?: string | null
+          email?: string
+          id?: string
+          is_storm_emergency?: boolean | null
+          location_state?: string | null
+          name?: string
+          phone?: string | null
+          portfolio_size?: string | null
+          properties_affected?: number | null
+          service_interest?: string | null
+        }
+        Relationships: []
+      }
       kpis: {
         Row: {
           created_at: string | null
