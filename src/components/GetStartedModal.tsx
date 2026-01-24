@@ -1,14 +1,14 @@
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Calendar, Monitor, FileText, ArrowRight, ExternalLink, Phone, Calculator } from "lucide-react";
+import { X, Calendar, Monitor, FileText, ArrowRight, Phone, Calculator } from "lucide-react";
 import { useGetStartedModal } from "@/hooks/use-get-started-modal";
 
 const options = [
   {
     id: "calculator",
     title: "Calculate Your Savings",
-    description: "See your projected ROI with our portfolio calculator",
+    description: "See your projected ROI in 2 minutes",
     icon: Calculator,
     iconBg: "bg-cta/20",
     iconColor: "text-cta",
@@ -22,7 +22,7 @@ const options = [
   {
     id: "consultation",
     title: "Request a Consultation",
-    description: "Schedule a call with our team to discuss your portfolio",
+    description: "Schedule a call to discuss your portfolio",
     icon: Calendar,
     iconBg: "bg-accent/20",
     iconColor: "text-accent",
@@ -34,23 +34,23 @@ const options = [
     endIcon: ArrowRight,
   },
   {
-    id: "demo",
-    title: "Try Roof Controller Demo",
-    description: "Explore our platform with sample data — no login required",
+    id: "platform",
+    title: "See Roof Controller in Action",
+    description: "Explore our platform managing 4,600+ roofs",
     icon: Monitor,
     iconBg: "bg-teal/20",
     iconColor: "text-teal",
     hoverBorder: "hover:border-teal",
     hoverBg: "hover:bg-teal/5",
-    link: "https://roofmind.lovable.app",
-    external: true,
+    link: "/roof-controller",
+    external: false,
     badge: "Interactive",
-    endIcon: ExternalLink,
+    endIcon: ArrowRight,
   },
   {
     id: "sample-report",
     title: "Request Sample Report",
-    description: "See what our inspection deliverables look like",
+    description: "See examples of our inspection deliverables",
     icon: FileText,
     iconBg: "bg-primary/20",
     iconColor: "text-primary",

@@ -12,6 +12,7 @@ import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import SavingsCalculator from "./pages/SavingsCalculator";
+import RoofController from "./pages/RoofController";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminKPIs from "./pages/admin/AdminKPIs";
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/savings-calculator" element={<SavingsCalculator />} />
           <Route path="/roi-calculator" element={<Navigate to="/savings-calculator" replace />} />
+          <Route path="/roof-controller" element={<RoofController />} />
           
           {/* Admin Routes */}
           <Route path="/admin" element={<AdminLayout />}>

@@ -28,8 +28,15 @@ const kpiDetails: Record<string, KPIDetail> = {
   "asset_value": {
     icon: DollarSign,
     lines: [
-      "Combined roof asset value under our management",
-      "Average property value: $12M"
+      "Scheduled over the next 24 months",
+      "Combined roof capital under our management"
+    ]
+  },
+  "roofs": {
+    icon: Building2,
+    lines: [
+      "Across industrial, retail & multi-family",
+      "Active portfolio under SRC management"
     ]
   },
   "properties": {
@@ -42,14 +49,14 @@ const kpiDetails: Record<string, KPIDetail> = {
   "states": {
     icon: MapPin,
     lines: [
-      "Nationwide coverage with regional expertise",
+      "Nationwide coverage, regional expertise",
       "AL, AR, FL, GA, IL, IN, KY, LA, MD, MI, MO, MS, NC, NJ, NY, OH, OK, PA, SC, TN, TX, VA, WI, and more"
     ]
   },
   "years": {
     icon: Calendar,
     lines: [
-      "Founded in 2010",
+      "Founded 2010, trusted by top REITs",
       "Industry leaders in commercial roof consulting"
     ]
   },
