@@ -10,7 +10,7 @@ const services = [
     title: "Construction Management",
     description:
       "Full-service oversight of commercial roofing projects from bidding through final inspection. We act as your advocate throughout the entire process, ensuring quality workmanship and competitive pricing.",
-    imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1632759145351-1d592919f522?w=800&q=80",
     features: [
       "Pre-construction meetings and planning",
       "Contractor bidding and selection",
@@ -39,7 +39,7 @@ const services = [
     title: "Survey Inspections",
     description:
       "Detailed condition surveys to establish baseline roof performance metrics. Ideal for new property acquisitions or establishing a maintenance baseline.",
-    imageUrl: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
     features: [
       "Complete roof system documentation",
       "Deficiency identification",
@@ -52,7 +52,7 @@ const services = [
     title: "Annual Inspections",
     description:
       "Routine maintenance inspections designed to maximize roof lifespan and prevent costly emergency repairs. Proactive care for your roofing assets.",
-    imageUrl: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80",
     features: [
       "Bi-annual inspection cycles",
       "Preventive maintenance reports",
