@@ -7,7 +7,6 @@ import {
   ClipboardList,
   Calendar,
   CloudLightning,
-  Calculator,
   ArrowRight,
   CheckCircle,
   HardHat,
@@ -81,19 +80,6 @@ const services = [
       "Insurance-ready documentation",
       "Damage assessment reports",
       "Emergency repair coordination",
-    ],
-  },
-  {
-    slug: "take-off",
-    title: "Take-off Inspections",
-    description:
-      "Accurate quantity takeoffs for budgeting, bidding, and project planning. Essential for replacement projects and contractor evaluations.",
-    icon: Calculator,
-    features: [
-      "Detailed quantity measurements",
-      "Material specifications",
-      "Bid package preparation",
-      "Cost estimation support",
     ],
   },
 ];

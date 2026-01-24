@@ -70,6 +70,14 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
+                  to="/services/construction-management"
+                  className="text-muted-foreground hover:text-accent transition-colors"
+                >
+                  Construction Management
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/services/due-diligence"
                   className="text-muted-foreground hover:text-accent transition-colors"
                 >
@@ -98,14 +106,6 @@ export function Footer() {
                   className="text-muted-foreground hover:text-accent transition-colors"
                 >
                   Storm Inspections
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services/take-off"
-                  className="text-muted-foreground hover:text-accent transition-colors"
-                >
-                  Take-off Inspections
                 </Link>
               </li>
             </ul>
