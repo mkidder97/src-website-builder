@@ -4,6 +4,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, Star } from "lucide-react";
 import annualInspectionsImage from "@/assets/annual-inspections.jpg";
+import constructionManagementImage from "@/assets/construction-management.jpg";
 
 const services = [
   {
@@ -11,7 +12,7 @@ const services = [
     title: "Construction Management",
     description:
       "Full-service oversight of commercial roofing projects from bidding through final inspection. We act as your advocate throughout the entire process, ensuring quality workmanship and competitive pricing.",
-    imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
+    imageUrl: constructionManagementImage,
     features: [
       "Pre-construction meetings and planning",
       "Contractor bidding and selection",

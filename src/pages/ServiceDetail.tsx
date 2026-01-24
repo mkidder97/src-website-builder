@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import annualInspectionsImage from "@/assets/annual-inspections.jpg";
+import constructionManagementImage from "@/assets/construction-management.jpg";
 import {
   FileSearch,
   ClipboardList,
@@ -42,7 +43,7 @@ const servicesData: Record<string, ServiceData> = {
     longDescription:
       "We manage every aspect of your commercial roofing projects, ensuring competitive pricing, quality workmanship, and accountability. Our CM services protect your investment and eliminate the headaches of managing contractors directly.",
     icon: HardHat,
-    heroImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80",
+    heroImage: constructionManagementImage,
     featured: true,
     features: [
       "Pre-Construction Planning & Meetings",
