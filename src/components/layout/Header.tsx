@@ -11,7 +11,6 @@ const services = [
   { name: "Survey Inspections", slug: "survey" },
   { name: "Annual Inspections", slug: "annual" },
   { name: "Storm Inspections", slug: "storm" },
-  { name: "Take-off Inspections", slug: "take-off" },
 ];
 
 export function Header() {
@@ -180,16 +179,16 @@ export function Header() {
               <Link
                 to="/roof-controller"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-accent hover:text-accent/80 transition-colors font-medium"
+                className="text-primary-foreground hover:text-accent transition-colors"
               >
-                🖥️ Roof Controller
+                Platform
               </Link>
               <Link
                 to="/savings-calculator"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-accent hover:text-accent/80 transition-colors font-medium"
+                className="text-primary-foreground hover:text-accent transition-colors"
               >
-                💰 Savings Calculator
+                Calculator
               </Link>
               <Link
                 to="/blog"

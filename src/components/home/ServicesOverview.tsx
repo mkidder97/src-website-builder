@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FileSearch, ClipboardList, Calendar, CloudLightning, Calculator, ArrowRight, HardHat, Star } from "lucide-react";
+import { FileSearch, ClipboardList, Calendar, CloudLightning, ArrowRight, HardHat, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const services = [
@@ -34,12 +34,6 @@ const services = [
     title: "Storm Inspections",
     description: "Rapid response assessments after severe weather events for insurance claims.",
     icon: CloudLightning,
-  },
-  {
-    slug: "take-off",
-    title: "Take-off Inspections",
-    description: "Accurate quantity takeoffs for budgeting, bidding, and project planning.",
-    icon: Calculator,
   },
 ];
 
