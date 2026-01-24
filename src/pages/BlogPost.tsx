@@ -167,10 +167,9 @@ export default function BlogPost() {
             </div>
 
             {/* Article Content */}
-            <div
-              className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-accent hover:prose-a:text-accent/80 prose-strong:text-foreground"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+            <article className="prose prose-lg max-w-none prose-headings:text-foreground prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3 prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-accent hover:prose-a:text-accent/80 prose-strong:text-foreground prose-ul:text-muted-foreground prose-ol:text-muted-foreground prose-li:my-1">
+              <ReactMarkdown>{post.content}</ReactMarkdown>
+            </article>
 
             {/* Share Section */}
             <div className="mt-12 pt-8 border-t border-border">
