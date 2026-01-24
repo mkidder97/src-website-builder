@@ -10,9 +10,27 @@ import {
   Calculator,
   ArrowRight,
   CheckCircle,
+  HardHat,
+  Star,
 } from "lucide-react";
 
 const services = [
+  {
+    slug: "construction-management",
+    title: "Construction Management",
+    description:
+      "Full-service oversight of commercial roofing projects from bidding through final inspection. We act as your advocate throughout the entire process, ensuring quality workmanship and competitive pricing.",
+    icon: HardHat,
+    features: [
+      "Pre-construction meetings and planning",
+      "Contractor bidding and selection",
+      "Detailed scope development",
+      "In-progress quality inspections",
+      "Final inspection and sign-off",
+      "Warranty coordination",
+    ],
+    featured: true,
+  },
   {
     slug: "due-diligence",
     title: "Due Diligence Inspections",
@@ -110,49 +128,58 @@ export default function Services() {
       <section className="bg-background section-padding">
         <div className="container-narrow mx-auto">
           <div className="space-y-16">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.slug}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
-              >
-                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
-                    <service.icon className="w-8 h-8 text-accent" />
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                    {service.title}
-                  </h2>
-                  <p className="text-muted-foreground mb-6">{service.description}</p>
-                  <ul className="space-y-3 mb-8">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                        <span className="text-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button asChild variant="cta">
-                    <Link to={`/services/${service.slug}`}>
-                      Learn More
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </Link>
-                  </Button>
-                </div>
-                <div
-                  className={`aspect-square max-h-96 rounded-2xl bg-gradient-to-br from-navy to-teal-dark flex items-center justify-center ${
-                    index % 2 === 1 ? "lg:order-1" : ""
-                  }`}
+            {services.map((service, index) => {
+              const isFeatured = 'featured' in service && service.featured;
+              return (
+                <motion.div
+                  key={service.slug}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
+                    index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                  } ${isFeatured ? "p-8 bg-gradient-to-br from-accent/5 to-accent/10 rounded-2xl border border-accent/20" : ""}`}
                 >
-                  <service.icon className="w-24 h-24 text-primary-foreground/20" />
-                </div>
-              </motion.div>
-            ))}
+                  <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                    {isFeatured && (
+                      <span className="inline-flex items-center gap-1 text-xs font-semibold text-accent bg-accent/20 px-3 py-1 rounded-full mb-4">
+                        <Star className="w-3 h-3 fill-current" />
+                        FEATURED SERVICE
+                      </span>
+                    )}
+                    <div className={`w-16 h-16 rounded-xl ${isFeatured ? 'bg-accent/20' : 'bg-accent/10'} flex items-center justify-center mb-6`}>
+                      <service.icon className="w-8 h-8 text-accent" />
+                    </div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                      {service.title}
+                    </h2>
+                    <p className="text-muted-foreground mb-6">{service.description}</p>
+                    <ul className="space-y-3 mb-8">
+                      {service.features.map((feature) => (
+                        <li key={feature} className="flex items-center gap-3">
+                          <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
+                          <span className="text-foreground">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button asChild variant="cta">
+                      <Link to={`/services/${service.slug}`}>
+                        Learn More
+                        <ArrowRight className="ml-2 w-5 h-5" />
+                      </Link>
+                    </Button>
+                  </div>
+                  <div
+                    className={`aspect-square max-h-96 rounded-2xl bg-gradient-to-br ${isFeatured ? 'from-accent/20 to-teal-dark' : 'from-navy to-teal-dark'} flex items-center justify-center ${
+                      index % 2 === 1 ? "lg:order-1" : ""
+                    }`}
+                  >
+                    <service.icon className={`w-24 h-24 ${isFeatured ? 'text-accent/40' : 'text-primary-foreground/20'}`} />
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>

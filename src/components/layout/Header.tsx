@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { useGetStartedModal } from "@/hooks/use-get-started-modal";
 
 const services = [
+  { name: "Construction Management", slug: "construction-management", featured: true },
   { name: "Due Diligence", slug: "due-diligence" },
   { name: "Survey Inspections", slug: "survey" },
   { name: "Annual Inspections", slug: "annual" },
@@ -75,9 +76,16 @@ export function Header() {
                     <Link
                       key={service.slug}
                       to={`/services/${service.slug}`}
-                      className="block px-4 py-2 text-sm text-foreground hover:bg-secondary rounded-md transition-colors"
+                      className={`block px-4 py-2 text-sm rounded-md transition-colors ${
+                        'featured' in service && service.featured 
+                          ? 'text-accent font-medium hover:bg-accent/10' 
+                          : 'text-foreground hover:bg-secondary'
+                      }`}
                     >
                       {service.name}
+                      {'featured' in service && service.featured && (
+                        <span className="ml-2 text-xs bg-accent/20 text-accent px-1.5 py-0.5 rounded">Popular</span>
+                      )}
                     </Link>
                   ))}
                 </div>
