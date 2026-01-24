@@ -115,7 +115,7 @@ const servicesData: Record<string, ServiceData> = {
     longDescription:
       "Our Annual Inspection program provides proactive maintenance oversight to extend roof life and prevent costly emergency repairs. Regular inspections catch small problems before they become major expenses.",
     icon: Calendar,
-    heroImage: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1920&q=80",
+    heroImage: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1920&q=80",
     features: [
       "Bi-annual inspection cycles (spring and fall)",
       "Preventive maintenance reports and tracking",
