@@ -1,10 +1,24 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Calendar, Monitor, FileText, ArrowRight, ExternalLink, Phone } from "lucide-react";
+import { X, Calendar, Monitor, FileText, ArrowRight, ExternalLink, Phone, Calculator } from "lucide-react";
 import { useGetStartedModal } from "@/hooks/use-get-started-modal";
 
 const options = [
+  {
+    id: "calculator",
+    title: "Calculate Your Savings",
+    description: "See your projected ROI with our portfolio calculator",
+    icon: Calculator,
+    iconBg: "bg-cta/20",
+    iconColor: "text-cta",
+    hoverBorder: "hover:border-cta",
+    hoverBg: "hover:bg-cta/5",
+    link: "/savings-calculator",
+    external: false,
+    badge: "New",
+    endIcon: ArrowRight,
+  },
   {
     id: "consultation",
     title: "Request a Consultation",

@@ -93,6 +93,16 @@ export function Header() {
             </div>
 
             <Link
+              to="/savings-calculator"
+              className={cn(
+                "text-sm font-medium transition-colors link-underline",
+                isActive("/savings-calculator") ? "text-accent" : "text-primary-foreground hover:text-accent"
+              )}
+            >
+              Calculator
+            </Link>
+
+            <Link
               to="/blog"
               className={cn(
                 "text-sm font-medium transition-colors link-underline",
@@ -157,6 +167,13 @@ export function Header() {
                   {service.name}
                 </Link>
               ))}
+              <Link
+                to="/savings-calculator"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-accent hover:text-accent/80 transition-colors font-medium"
+              >
+                💰 Savings Calculator
+              </Link>
               <Link
                 to="/blog"
                 onClick={() => setMobileMenuOpen(false)}
