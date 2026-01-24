@@ -10,6 +10,7 @@ import {
   LogOut,
   Menu,
   X,
+  ShieldAlert,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
@@ -27,24 +28,57 @@ export default function AdminLayout() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
+    const checkAdminRole = async (userId: string) => {
+      const { data, error } = await supabase
+        .rpc('has_role', { _user_id: userId, _role: 'admin' });
+      
+      if (error) {
+        console.error('Error checking admin role:', error);
+        return false;
+      }
+      return data === true;
+    };
+
     const { data: authListener } = supabase.auth.onAuthStateChange(
       async (event, session) => {
         if (session?.user) {
           setUser(session.user);
+          const hasAdminRole = await checkAdminRole(session.user.id);
+          setIsAdmin(hasAdminRole);
+          if (!hasAdminRole) {
+            toast({
+              title: "Access Denied",
+              description: "You do not have admin privileges.",
+              variant: "destructive",
+            });
+            navigate("/");
+          }
         } else {
           setUser(null);
+          setIsAdmin(false);
           navigate("/login");
         }
         setLoading(false);
       }
     );
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
       if (session?.user) {
         setUser(session.user);
+        const hasAdminRole = await checkAdminRole(session.user.id);
+        setIsAdmin(hasAdminRole);
+        if (!hasAdminRole) {
+          toast({
+            title: "Access Denied",
+            description: "You do not have admin privileges.",
+            variant: "destructive",
+          });
+          navigate("/");
+        }
       } else {
         navigate("/login");
       }
@@ -54,7 +88,7 @@ export default function AdminLayout() {
     return () => {
       authListener.subscription.unsubscribe();
     };
-  }, [navigate]);
+  }, [navigate, toast]);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -73,8 +107,19 @@ export default function AdminLayout() {
     );
   }
 
-  if (!user) {
-    return null;
+  if (!user || !isAdmin) {
+    return (
+      <div className="min-h-screen bg-primary flex items-center justify-center">
+        <div className="text-center">
+          <ShieldAlert className="w-16 h-16 text-destructive mx-auto mb-4" />
+          <h1 className="text-xl font-bold text-primary-foreground mb-2">Access Denied</h1>
+          <p className="text-muted-foreground mb-4">You do not have permission to access this area.</p>
+          <Button onClick={() => navigate("/")} variant="outline">
+            Return Home
+          </Button>
+        </div>
+      </div>
+    );
   }
 
   return (
