@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import { VideoShowcase } from "@/components/roof-controller/VideoShowcase";
 import {
   ArrowRight,
   Monitor,
@@ -190,8 +191,12 @@ export default function RoofController() {
         </div>
       </section>
 
+      {/* Video Showcase Section */}
+      {/* TODO: Replace with actual YouTube/Vimeo embed URL when video is ready */}
+      <VideoShowcase videoUrl="" />
+
       {/* Screenshot Gallery with Photos */}
-      <section className="bg-secondary section-padding">
+      <section className="bg-background section-padding">
         <div className="container-narrow mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
