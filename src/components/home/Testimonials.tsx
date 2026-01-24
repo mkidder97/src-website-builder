@@ -4,9 +4,9 @@ import { Quote } from "lucide-react";
 const testimonials = [
   {
     quote:
-      "Roofing is the largest capital expense on a building. We have full confidence in SRC to protect our investments and provide accurate, actionable data.",
-    author: "Jim Van Sickle",
-    title: "Sr. VP, Global Logistics Properties",
+      "Southern Roof Consultants are the Easy Button. They aggressively get bids from quality contractors to ensure we are getting the best for our investors.",
+    author: "Pete Hoffman",
+    title: "VP Construction, Sealy & Company",
   },
 ];
 
