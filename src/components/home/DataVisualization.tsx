@@ -21,7 +21,7 @@ const workOrderData = [
 // Capital planning data
 const capitalData = [
   { name: "Recover", value: 56, color: "hsl(var(--accent))" },
-  { name: "Tear-off", value: 36, color: "hsl(var(--teal))" },
+  { name: "Tear-off", value: 36, color: "hsl(var(--navy))" },
   { name: "Partial", value: 6, color: "hsl(var(--cta))" },
   { name: "Other", value: 2, color: "hsl(var(--muted-foreground))" },
 ];
