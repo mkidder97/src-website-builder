@@ -24,15 +24,15 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-muted-foreground">
                 <Phone className="w-5 h-5 text-accent" />
-                <span>(555) 123-4567</span>
+                <a href="tel:+17273620116" className="hover:text-accent transition-colors">(727) 362-0116</a>
               </div>
               <div className="flex items-center gap-3 text-muted-foreground">
                 <Mail className="w-5 h-5 text-accent" />
-                <span>info@southernroofconsultants.com</span>
+                <a href="mailto:info@southernroof.biz" className="hover:text-accent transition-colors">info@southernroof.biz</a>
               </div>
-              <div className="flex items-center gap-3 text-muted-foreground">
-                <MapPin className="w-5 h-5 text-accent" />
-                <span>Dallas, TX</span>
+              <div className="flex items-start gap-3 text-muted-foreground">
+                <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <span>875 Pasadena Ave S, Suite A<br />South Pasadena, FL 33707</span>
               </div>
             </div>
           </div>

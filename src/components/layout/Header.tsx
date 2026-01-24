@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useGetStartedModal } from "@/hooks/use-get-started-modal";
@@ -132,8 +132,17 @@ export function Header() {
             </Link>
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
+          {/* Client Login & CTA Button */}
+          <div className="hidden lg:flex items-center gap-4">
+            <a
+              href="https://portal.roofcontroller.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary-foreground transition-colors"
+            >
+              <LogIn className="w-4 h-4" />
+              Client Login
+            </a>
             <Button variant="cta" onClick={openGetStartedModal}>
               Get Started
             </Button>
@@ -204,6 +213,16 @@ export function Header() {
               >
                 Contact
               </Link>
+              <a
+                href="https://portal.roofcontroller.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors"
+              >
+                <LogIn className="w-4 h-4" />
+                Client Login
+              </a>
               <Button
                 variant="cta"
                 className="w-full mt-2"

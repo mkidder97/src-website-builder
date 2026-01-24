@@ -3,6 +3,7 @@ import { Hero } from "@/components/home/Hero";
 import { KPISection } from "@/components/home/KPISection";
 import { ServicesOverview } from "@/components/home/ServicesOverview";
 import { DataVisualization } from "@/components/home/DataVisualization";
+import { StormResponse } from "@/components/home/StormResponse";
 import { CalculatorTeaser } from "@/components/home/CalculatorTeaser";
 import { BlogPreview } from "@/components/home/BlogPreview";
 import { Testimonials } from "@/components/home/Testimonials";
@@ -16,6 +17,7 @@ const Index = () => {
       <KPISection />
       <ServicesOverview />
       <DataVisualization />
+      <StormResponse />
       <CalculatorTeaser />
       <BlogPreview />
       <Testimonials />

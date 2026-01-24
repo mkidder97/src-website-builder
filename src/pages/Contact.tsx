@@ -135,7 +135,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Phone</h3>
-                    <p className="text-muted-foreground">(555) 123-4567</p>
+                    <a href="tel:+17273620116" className="text-muted-foreground hover:text-accent transition-colors">(727) 362-0116</a>
                   </div>
                 </div>
 
@@ -145,7 +145,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                    <p className="text-muted-foreground">info@southernroofconsultants.com</p>
+                    <a href="mailto:info@southernroof.biz" className="text-muted-foreground hover:text-accent transition-colors">info@southernroof.biz</a>
                   </div>
                 </div>
 
@@ -155,7 +155,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Office</h3>
-                    <p className="text-muted-foreground">Dallas, Texas</p>
+                    <p className="text-muted-foreground">875 Pasadena Ave S, Suite A<br />South Pasadena, FL 33707</p>
                     <p className="text-sm text-muted-foreground mt-1">
                       Serving clients nationwide across 28+ states
                     </p>
