@@ -27,7 +27,7 @@ const services = [
     slug: "annual",
     title: "Annual Inspections",
     description: "Routine maintenance inspections to maximize roof lifespan and prevent issues.",
-    imageUrl: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=400&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
   },
   {
     slug: "storm",
