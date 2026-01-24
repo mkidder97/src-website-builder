@@ -52,7 +52,7 @@ const services = [
     title: "Annual Inspections",
     description:
       "Routine maintenance inspections designed to maximize roof lifespan and prevent costly emergency repairs. Proactive care for your roofing assets.",
-    imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
     features: [
       "Bi-annual inspection cycles",
       "Preventive maintenance reports",
