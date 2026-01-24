@@ -11,16 +11,59 @@ import {
   ArrowRight,
   CheckCircle,
   ArrowLeft,
+  HardHat,
+  Shield,
+  DollarSign,
+  ClipboardCheck,
+  FileText,
+  HeartHandshake,
 } from "lucide-react";
 
-const servicesData: Record<string, {
+interface ServiceData {
   title: string;
+  subtitle?: string;
   description: string;
   longDescription: string;
   icon: typeof FileSearch;
   features: string[];
   process: { step: number; title: string; description: string }[];
-}> = {
+  whyChoose?: { icon: typeof Shield; title: string; description: string }[];
+  featured?: boolean;
+}
+
+const servicesData: Record<string, ServiceData> = {
+  "construction-management": {
+    title: "Construction Management",
+    subtitle: "Your Advocate From Bid to Completion",
+    description: "Full-service oversight of commercial roofing projects from bidding through final inspection.",
+    longDescription:
+      "We manage every aspect of your commercial roofing projects, ensuring competitive pricing, quality workmanship, and accountability. Our CM services protect your investment and eliminate the headaches of managing contractors directly.",
+    icon: HardHat,
+    featured: true,
+    features: [
+      "Pre-Construction Planning & Meetings",
+      "Contractor Bidding & Selection",
+      "Scope Development & Specifications",
+      "In-Progress Quality Inspections",
+      "Final Inspection & Punch List",
+      "Warranty Documentation & Coordination",
+    ],
+    process: [
+      { step: 1, title: "Project Assessment", description: "We evaluate the existing roof conditions, review any previous inspection reports, and define project requirements with your team." },
+      { step: 2, title: "Scope Development", description: "Our team creates detailed specifications and scope documents that clearly define work requirements, materials, and quality standards." },
+      { step: 3, title: "Competitive Bidding", description: "We solicit bids from pre-qualified contractors, analyze proposals, and provide recommendations based on price, capability, and track record." },
+      { step: 4, title: "Pre-Construction Meeting", description: "Before work begins, we facilitate a meeting with the selected contractor to review scope, timeline, safety requirements, and communication protocols." },
+      { step: 5, title: "In-Progress Inspections", description: "Throughout the project, our inspectors verify work quality, material compliance, and adherence to specifications. We document progress and address issues immediately." },
+      { step: 6, title: "Final Inspection & Closeout", description: "We conduct a comprehensive final inspection, develop punch lists for any deficiencies, verify warranty documentation, and provide you with complete project records." },
+    ],
+    whyChoose: [
+      { icon: Shield, title: "Vendor-Neutral Advocacy", description: "We don't install roofs, so our only interest is your best outcome" },
+      { icon: DollarSign, title: "Cost Savings", description: "Competitive bidding typically saves 10-15% vs. single-source pricing" },
+      { icon: ClipboardCheck, title: "Quality Assurance", description: "Multiple inspection touchpoints catch issues before they become problems" },
+      { icon: FileText, title: "Documentation", description: "Complete records protect your warranties and support future planning" },
+      { icon: HeartHandshake, title: "Peace of Mind", description: "One point of contact manages the entire process" },
+    ],
+  },
   "due-diligence": {
     title: "Due Diligence Inspections",
     description: "Comprehensive roof assessments for property acquisitions and portfolio analysis.",
@@ -219,7 +262,7 @@ export default function ServiceDetail() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">Our Process</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className={`grid grid-cols-1 ${service.process.length > 3 ? 'md:grid-cols-2 lg:grid-cols-3' : 'md:grid-cols-3'} gap-8`}>
               {service.process.map((step, index) => (
                 <motion.div
                   key={step.step}
@@ -239,6 +282,42 @@ export default function ServiceDetail() {
         </div>
       </section>
 
+      {/* Why Choose Section (for featured services) */}
+      {service.whyChoose && (
+        <section className="bg-background section-padding">
+          <div className="container-narrow mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
+                Why Choose SRC for Construction Management
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {service.whyChoose.map((item, index) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="p-6 bg-secondary rounded-xl"
+                  >
+                    <div className="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center mb-4">
+                      <item.icon className="w-6 h-6 text-accent" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
+                    <p className="text-muted-foreground text-sm">{item.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
       {/* CTA */}
       <section className="bg-cta section-padding">
         <div className="container-narrow mx-auto text-center">
@@ -249,10 +328,12 @@ export default function ServiceDetail() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-cta-foreground mb-4">
-              Ready to Get Started?
+              {service.featured ? "Ready to take the stress out of your next roofing project?" : "Ready to Get Started?"}
             </h2>
             <p className="text-cta-foreground/80 mb-8 max-w-2xl mx-auto">
-              Contact us today to discuss your {service.title.toLowerCase()} needs.
+              {service.featured 
+                ? "Contact us to discuss Construction Management services for your portfolio."
+                : `Contact us today to discuss your ${service.title.toLowerCase()} needs.`}
             </p>
             <Button
               asChild
