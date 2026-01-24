@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import annualInspectionsImage from "@/assets/annual-inspections.jpg";
 
 const services = [
   {
@@ -27,7 +28,7 @@ const services = [
     slug: "annual",
     title: "Annual Inspections",
     description: "Routine maintenance inspections to maximize roof lifespan and prevent issues.",
-    imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=80",
+    imageUrl: annualInspectionsImage,
   },
   {
     slug: "storm",

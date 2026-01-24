@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, Star } from "lucide-react";
+import annualInspectionsImage from "@/assets/annual-inspections.jpg";
 
 const services = [
   {
@@ -52,7 +53,7 @@ const services = [
     title: "Annual Inspections",
     description:
       "Routine maintenance inspections designed to maximize roof lifespan and prevent costly emergency repairs. Proactive care for your roofing assets.",
-    imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
+    imageUrl: annualInspectionsImage,
     features: [
       "Bi-annual inspection cycles",
       "Preventive maintenance reports",
