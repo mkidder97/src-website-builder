@@ -41,7 +41,7 @@ const servicesData: Record<string, ServiceData> = {
     longDescription:
       "We manage every aspect of your commercial roofing projects, ensuring competitive pricing, quality workmanship, and accountability. Our CM services protect your investment and eliminate the headaches of managing contractors directly.",
     icon: HardHat,
-    heroImage: "https://images.unsplash.com/photo-1590274853856-f22d5ee3d228?w=1920&q=80",
+    heroImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80",
     featured: true,
     features: [
       "Pre-Construction Planning & Meetings",
@@ -115,7 +115,7 @@ const servicesData: Record<string, ServiceData> = {
     longDescription:
       "Our Annual Inspection program provides proactive maintenance oversight to extend roof life and prevent costly emergency repairs. Regular inspections catch small problems before they become major expenses.",
     icon: Calendar,
-    heroImage: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&q=80",
+    heroImage: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1920&q=80",
     features: [
       "Bi-annual inspection cycles (spring and fall)",
       "Preventive maintenance reports and tracking",
