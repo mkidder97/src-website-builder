@@ -18,6 +18,7 @@ import {
   FileText,
   HeartHandshake,
 } from "lucide-react";
+import { useSampleReportsModal } from "@/components/SampleReportsModal";
 
 interface ServiceData {
   title: string;
@@ -25,8 +26,9 @@ interface ServiceData {
   description: string;
   longDescription: string;
   icon: typeof FileSearch;
+  heroImage: string;
   features: string[];
-  process: { step: number; title: string; description: string }[];
+  process: { step: number; title: string; description: string; image?: string }[];
   whyChoose?: { icon: typeof Shield; title: string; description: string }[];
   featured?: boolean;
 }
@@ -39,6 +41,7 @@ const servicesData: Record<string, ServiceData> = {
     longDescription:
       "We manage every aspect of your commercial roofing projects, ensuring competitive pricing, quality workmanship, and accountability. Our CM services protect your investment and eliminate the headaches of managing contractors directly.",
     icon: HardHat,
+    heroImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80",
     featured: true,
     features: [
       "Pre-Construction Planning & Meetings",
@@ -49,9 +52,9 @@ const servicesData: Record<string, ServiceData> = {
       "Warranty Documentation & Coordination",
     ],
     process: [
-      { step: 1, title: "Project Assessment", description: "We evaluate the existing roof conditions, review any previous inspection reports, and define project requirements with your team." },
-      { step: 2, title: "Scope Development", description: "Our team creates detailed specifications and scope documents that clearly define work requirements, materials, and quality standards." },
-      { step: 3, title: "Competitive Bidding", description: "We solicit bids from pre-qualified contractors, analyze proposals, and provide recommendations based on price, capability, and track record." },
+      { step: 1, title: "Project Assessment", description: "We evaluate the existing roof conditions, review any previous inspection reports, and define project requirements with your team.", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=200&q=80" },
+      { step: 2, title: "Scope Development", description: "Our team creates detailed specifications and scope documents that clearly define work requirements, materials, and quality standards.", image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&q=80" },
+      { step: 3, title: "Competitive Bidding", description: "We solicit bids from pre-qualified contractors, analyze proposals, and provide recommendations based on price, capability, and track record.", image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=200&q=80" },
       { step: 4, title: "Pre-Construction Meeting", description: "Before work begins, we facilitate a meeting with the selected contractor to review scope, timeline, safety requirements, and communication protocols." },
       { step: 5, title: "In-Progress Inspections", description: "Throughout the project, our inspectors verify work quality, material compliance, and adherence to specifications. We document progress and address issues immediately." },
       { step: 6, title: "Final Inspection & Closeout", description: "We conduct a comprehensive final inspection, develop punch lists for any deficiencies, verify warranty documentation, and provide you with complete project records." },
@@ -70,6 +73,7 @@ const servicesData: Record<string, ServiceData> = {
     longDescription:
       "Our Due Diligence Inspections provide institutional investors with the detailed roof condition data needed to make informed acquisition decisions. We assess physical conditions, estimate remaining useful life, and forecast capital expenditures.",
     icon: FileSearch,
+    heroImage: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1920&q=80",
     features: [
       "Physical condition assessment with photo documentation",
       "Remaining useful life estimation based on industry standards",
@@ -79,9 +83,9 @@ const servicesData: Record<string, ServiceData> = {
       "Fast turnaround times to meet transaction deadlines",
     ],
     process: [
-      { step: 1, title: "Scope Definition", description: "We work with you to define inspection scope and reporting requirements." },
-      { step: 2, title: "Field Inspection", description: "Our certified inspectors conduct thorough on-site assessments." },
-      { step: 3, title: "Report Delivery", description: "Receive comprehensive reports with actionable insights." },
+      { step: 1, title: "Scope Definition", description: "We work with you to define inspection scope and reporting requirements.", image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&q=80" },
+      { step: 2, title: "Field Inspection", description: "Our certified inspectors conduct thorough on-site assessments.", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=200&q=80" },
+      { step: 3, title: "Report Delivery", description: "Receive comprehensive reports with actionable insights.", image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=200&q=80" },
     ],
   },
   survey: {
@@ -90,6 +94,7 @@ const servicesData: Record<string, ServiceData> = {
     longDescription:
       "Survey Inspections establish a comprehensive baseline of your roof system's current condition. This foundational assessment is essential for new acquisitions or before implementing a maintenance program.",
     icon: ClipboardList,
+    heroImage: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1920&q=80",
     features: [
       "Complete roof system documentation including all components",
       "Deficiency identification with severity ratings",
@@ -99,9 +104,9 @@ const servicesData: Record<string, ServiceData> = {
       "Integration with asset management systems",
     ],
     process: [
-      { step: 1, title: "Pre-Survey Review", description: "Review existing documentation and define survey parameters." },
-      { step: 2, title: "Comprehensive Survey", description: "Complete on-site survey with measurements and photos." },
-      { step: 3, title: "Documentation Package", description: "Deliver complete survey documentation and recommendations." },
+      { step: 1, title: "Pre-Survey Review", description: "Review existing documentation and define survey parameters.", image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&q=80" },
+      { step: 2, title: "Comprehensive Survey", description: "Complete on-site survey with measurements and photos.", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=200&q=80" },
+      { step: 3, title: "Documentation Package", description: "Deliver complete survey documentation and recommendations.", image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=200&q=80" },
     ],
   },
   annual: {
@@ -110,6 +115,7 @@ const servicesData: Record<string, ServiceData> = {
     longDescription:
       "Our Annual Inspection program provides proactive maintenance oversight to extend roof life and prevent costly emergency repairs. Regular inspections catch small problems before they become major expenses.",
     icon: Calendar,
+    heroImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80",
     features: [
       "Bi-annual inspection cycles (spring and fall)",
       "Preventive maintenance reports and tracking",
@@ -119,9 +125,9 @@ const servicesData: Record<string, ServiceData> = {
       "Priority scheduling for identified issues",
     ],
     process: [
-      { step: 1, title: "Program Setup", description: "Establish inspection schedule and baseline documentation." },
-      { step: 2, title: "Regular Inspections", description: "Conduct scheduled inspections throughout the year." },
-      { step: 3, title: "Continuous Reporting", description: "Ongoing reports and recommendations for maintenance." },
+      { step: 1, title: "Program Setup", description: "Establish inspection schedule and baseline documentation.", image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&q=80" },
+      { step: 2, title: "Regular Inspections", description: "Conduct scheduled inspections throughout the year.", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=200&q=80" },
+      { step: 3, title: "Continuous Reporting", description: "Ongoing reports and recommendations for maintenance.", image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=200&q=80" },
     ],
   },
   storm: {
@@ -130,6 +136,7 @@ const servicesData: Record<string, ServiceData> = {
     longDescription:
       "When severe weather strikes, our Storm Inspection team provides rapid response to document damage and support insurance claims. We help you navigate the claims process and prioritize repairs.",
     icon: CloudLightning,
+    heroImage: "https://images.unsplash.com/photo-1527482797697-8795b05a13fe?w=1920&q=80",
     features: [
       "24-48 hour response time after weather events",
       "Insurance-ready documentation and reports",
@@ -139,9 +146,9 @@ const servicesData: Record<string, ServiceData> = {
       "Post-repair verification inspections",
     ],
     process: [
-      { step: 1, title: "Rapid Response", description: "Deploy inspection team within 24-48 hours of your call." },
-      { step: 2, title: "Damage Documentation", description: "Thorough documentation for insurance purposes." },
-      { step: 3, title: "Claims Support", description: "Ongoing support through the insurance claims process." },
+      { step: 1, title: "Rapid Response", description: "Deploy inspection team within 24-48 hours of your call.", image: "https://images.unsplash.com/photo-1527482797697-8795b05a13fe?w=200&q=80" },
+      { step: 2, title: "Damage Documentation", description: "Thorough documentation for insurance purposes.", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=200&q=80" },
+      { step: 3, title: "Claims Support", description: "Ongoing support through the insurance claims process.", image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=200&q=80" },
     ],
   },
   "take-off": {
@@ -150,6 +157,7 @@ const servicesData: Record<string, ServiceData> = {
     longDescription:
       "Take-off Inspections provide accurate quantity measurements essential for replacement projects, contractor bidding, and budget planning. Our detailed takeoffs ensure you have the data needed for informed decisions.",
     icon: Calculator,
+    heroImage: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=80",
     features: [
       "Detailed quantity measurements for all roof components",
       "Material specifications and recommendations",
@@ -159,9 +167,9 @@ const servicesData: Record<string, ServiceData> = {
       "Scope validation during project execution",
     ],
     process: [
-      { step: 1, title: "Measurement Survey", description: "Conduct detailed measurements of all roof areas and components." },
-      { step: 2, title: "Takeoff Report", description: "Deliver comprehensive quantity takeoff with specifications." },
-      { step: 3, title: "Bid Support", description: "Provide support during contractor bidding and selection." },
+      { step: 1, title: "Measurement Survey", description: "Conduct detailed measurements of all roof areas and components.", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=200&q=80" },
+      { step: 2, title: "Takeoff Report", description: "Deliver comprehensive quantity takeoff with specifications.", image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=200&q=80" },
+      { step: 3, title: "Bid Support", description: "Provide support during contractor bidding and selection.", image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&q=80" },
     ],
   },
 };
@@ -169,6 +177,7 @@ const servicesData: Record<string, ServiceData> = {
 export default function ServiceDetail() {
   const { slug } = useParams<{ slug: string }>();
   const service = slug ? servicesData[slug] : null;
+  const { open: openSampleReportsModal } = useSampleReportsModal();
 
   if (!service) {
     return (
@@ -185,13 +194,18 @@ export default function ServiceDetail() {
     );
   }
 
-  const Icon = service.icon;
-
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="hero-gradient section-padding pt-32">
-        <div className="container-narrow mx-auto">
+      {/* Hero Section with Background Image */}
+      <section 
+        className="relative h-[450px] flex items-center"
+        style={{
+          backgroundImage: `linear-gradient(to right, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.65)), url('${service.heroImage}')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="container-narrow mx-auto section-padding">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -199,23 +213,21 @@ export default function ServiceDetail() {
           >
             <Link
               to="/services"
-              className="inline-flex items-center text-muted-foreground hover:text-accent transition-colors mb-6"
+              className="inline-flex items-center text-gray-400 hover:text-accent transition-colors mb-6"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Services
             </Link>
-            <div className="flex items-start gap-6">
-              <div className="w-20 h-20 rounded-xl bg-accent/20 flex items-center justify-center flex-shrink-0">
-                <Icon className="w-10 h-10 text-accent" />
-              </div>
-              <div>
-                <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
-                  {service.title}
-                </h1>
-                <p className="text-lg text-muted-foreground max-w-2xl">
-                  {service.longDescription}
-                </p>
-              </div>
+            <div>
+              <span className="text-accent text-sm font-medium uppercase tracking-wider">
+                Inspection Services
+              </span>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-4">
+                {service.title}
+              </h1>
+              <p className="text-lg text-gray-300 max-w-2xl">
+                {service.longDescription}
+              </p>
             </div>
           </motion.div>
         </div>
@@ -252,8 +264,8 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      {/* Process */}
-      <section className="bg-secondary section-padding">
+      {/* Process with Photos */}
+      <section className="bg-muted section-padding">
         <div className="container-narrow mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -261,7 +273,7 @@ export default function ServiceDetail() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">Our Process</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-12">Our Process</h2>
             <div className={`grid grid-cols-1 ${service.process.length > 3 ? 'md:grid-cols-2 lg:grid-cols-3' : 'md:grid-cols-3'} gap-8`}>
               {service.process.map((step, index) => (
                 <motion.div
@@ -270,10 +282,19 @@ export default function ServiceDetail() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="relative"
+                  className="text-center"
                 >
-                  <div className="text-6xl font-bold text-accent/20 mb-4">{step.step}</div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">{step.title}</h3>
+                  {step.image ? (
+                    <div className="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 ring-4 ring-accent/20">
+                      <img src={step.image} alt={step.title} className="w-full h-full object-cover" />
+                    </div>
+                  ) : (
+                    <div className="w-24 h-24 mx-auto rounded-full bg-accent/10 flex items-center justify-center mb-4 ring-4 ring-accent/20">
+                      <span className="text-3xl font-bold text-accent">{step.step}</span>
+                    </div>
+                  )}
+                  <span className="text-accent font-bold text-lg">Step {step.step}</span>
+                  <h3 className="text-xl font-semibold text-foreground mt-2 mb-2">{step.title}</h3>
                   <p className="text-muted-foreground">{step.description}</p>
                 </motion.div>
               ))}
@@ -282,9 +303,62 @@ export default function ServiceDetail() {
         </div>
       </section>
 
+      {/* Deliverables Section with Report Preview */}
+      <section className="bg-background section-padding">
+        <div className="container-narrow mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">What You'll Receive</h2>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-accent flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground">Executive summary with key findings</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-accent flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground">Detailed condition assessment with photos</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-accent flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground">Capital expenditure forecasting</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-accent flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground">Repair recommendations and prioritization</span>
+                </li>
+              </ul>
+              <Button variant="cta" onClick={openSampleReportsModal}>
+                Request Sample Report
+              </Button>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=80" 
+                alt="Sample report preview"
+                className="rounded-xl shadow-2xl"
+              />
+              <div className="absolute top-4 right-4 bg-accent text-white px-3 py-1 rounded-full text-sm font-medium">
+                Sample Report
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Section (for featured services) */}
       {service.whyChoose && (
-        <section className="bg-background section-padding">
+        <section className="bg-secondary section-padding">
           <div className="container-narrow mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -303,9 +377,9 @@ export default function ServiceDetail() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="p-6 bg-secondary rounded-xl"
+                    className="p-6 bg-card rounded-xl border border-border"
                   >
-                    <div className="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
                       <item.icon className="w-6 h-6 text-accent" />
                     </div>
                     <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>

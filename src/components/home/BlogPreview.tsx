@@ -15,6 +15,14 @@ interface BlogPost {
   published_at: string | null;
 }
 
+// Fallback images for blog posts when no cover image is set
+const fallbackImages: Record<string, string> = {
+  "Maintenance": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
+  "Storm Preparedness": "https://images.unsplash.com/photo-1527482797697-8795b05a13fe?w=800&q=80",
+  "Due Diligence": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+  "default": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+};
+
 function estimateReadTime(content: string): number {
   const wordsPerMinute = 200;
   const words = content?.split(/\s+/).length || 0;
@@ -42,6 +50,12 @@ export function BlogPreview() {
 
     fetchPosts();
   }, []);
+
+  const getImageForPost = (post: BlogPost): string => {
+    if (post.cover_image_url) return post.cover_image_url;
+    if (post.category && fallbackImages[post.category]) return fallbackImages[post.category];
+    return fallbackImages.default;
+  };
 
   if (loading) {
     return (
@@ -118,20 +132,14 @@ export function BlogPreview() {
             >
               <Link
                 to={`/blog/${post.slug}`}
-                className="group block h-full bg-card rounded-xl overflow-hidden card-hover border border-border"
+                className="group block h-full bg-card rounded-xl overflow-hidden border border-border hover:shadow-lg transition-shadow"
               >
-                <div className="aspect-video bg-muted relative overflow-hidden">
-                  {post.cover_image_url ? (
-                    <img
-                      src={post.cover_image_url}
-                      alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-navy to-teal flex items-center justify-center">
-                      <span className="text-primary-foreground/50 text-sm">SRC</span>
-                    </div>
-                  )}
+                <div className="aspect-video relative overflow-hidden">
+                  <img
+                    src={getImageForPost(post)}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-4 mb-3">

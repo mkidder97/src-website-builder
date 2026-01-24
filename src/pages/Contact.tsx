@@ -92,9 +92,16 @@ export default function Contact() {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="hero-gradient section-padding pt-32">
-        <div className="container-narrow mx-auto">
+      {/* Hero Section with Background */}
+      <section 
+        className="relative h-[350px] flex items-end"
+        style={{
+          backgroundImage: `linear-gradient(to right, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="container-narrow mx-auto section-padding pb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -104,10 +111,10 @@ export default function Contact() {
             <span className="text-accent text-sm font-medium uppercase tracking-wider">
               Contact Us
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mt-2 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-6">
               Let's Discuss Your Project
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-gray-300">
               Whether you need a single inspection or a comprehensive portfolio assessment, our
               team is ready to help protect your roofing investments.
             </p>

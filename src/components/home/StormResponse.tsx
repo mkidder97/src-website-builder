@@ -22,8 +22,15 @@ const features = [
 
 export function StormResponse() {
   return (
-    <section className="bg-destructive/5 border-y border-destructive/20 section-padding">
-      <div className="container-narrow mx-auto">
+    <section 
+      className="relative section-padding"
+      style={{
+        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), url('https://images.unsplash.com/photo-1527482797697-8795b05a13fe?w=1920&q=80')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <div className="container-narrow mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -32,18 +39,18 @@ export function StormResponse() {
           className="text-center max-w-3xl mx-auto"
         >
           {/* Alert Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-destructive/10 text-destructive mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-destructive/20 text-destructive mb-6">
             <AlertTriangle className="w-4 h-4" />
             <span className="text-sm font-semibold uppercase tracking-wider">
               Storm Response
             </span>
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             24-48 Hour Emergency Mobilization
           </h2>
 
-          <p className="text-lg text-muted-foreground mb-10">
+          <p className="text-lg text-gray-300 mb-10">
             When severe weather hits your portfolio, time is critical. Our storm response team 
             deploys within 24-48 hours to document damage and support your insurance claims.
           </p>
@@ -57,13 +64,13 @@ export function StormResponse() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="flex flex-col items-center p-6 rounded-xl bg-card border border-border"
+                className="flex flex-col items-center p-6 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10"
               >
-                <div className="w-14 h-14 rounded-full bg-destructive/10 flex items-center justify-center mb-4">
+                <div className="w-14 h-14 rounded-full bg-destructive/20 flex items-center justify-center mb-4">
                   <feature.icon className="w-7 h-7 text-destructive" />
                 </div>
-                <h3 className="font-semibold text-foreground mb-1">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground">{feature.description}</p>
+                <h3 className="font-semibold text-white mb-1">{feature.title}</h3>
+                <p className="text-sm text-gray-400">{feature.description}</p>
               </motion.div>
             ))}
           </div>
