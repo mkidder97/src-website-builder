@@ -118,8 +118,8 @@ export default function RoofController() {
                   size="lg" 
                   className="border-white/30 text-white bg-white/10 hover:bg-white/20"
                 >
-                  <a href="https://roofmind.lovable.app" target="_blank" rel="noopener noreferrer">
-                    View Sample Dashboard
+                  <a href="https://portal.roofcontroller.com" target="_blank" rel="noopener noreferrer">
+                    Client Portal Login
                     <ExternalLink className="ml-2 w-5 h-5" />
                   </a>
                 </Button>
@@ -335,8 +335,8 @@ export default function RoofController() {
                 variant="outline"
                 className="border-cta-foreground/50 text-cta-foreground hover:bg-cta-foreground/10"
               >
-                <a href="https://roofmind.lovable.app" target="_blank" rel="noopener noreferrer">
-                  Try Sample Dashboard
+                <a href="https://portal.roofcontroller.com" target="_blank" rel="noopener noreferrer">
+                  Client Portal Login
                   <ExternalLink className="ml-2 w-5 h-5" />
                 </a>
               </Button>
