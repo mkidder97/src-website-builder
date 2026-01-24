@@ -93,8 +93,8 @@ export function Hero() {
                 <Building2 className="w-6 h-6 text-accent" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-primary-foreground">2,500+</p>
-                <p className="text-sm text-muted-foreground">Properties Inspected</p>
+                <p className="text-2xl font-bold text-primary-foreground">4,600+</p>
+                <p className="text-sm text-muted-foreground">Roofs Managed</p>
               </div>
             </div>
           </motion.div>
