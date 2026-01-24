@@ -152,6 +152,24 @@ export type Database = {
         }
         Relationships: []
       }
+      lead_submission_log: {
+        Row: {
+          email_hash: string
+          id: string
+          submitted_at: string | null
+        }
+        Insert: {
+          email_hash: string
+          id?: string
+          submitted_at?: string | null
+        }
+        Update: {
+          email_hash?: string
+          id?: string
+          submitted_at?: string | null
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
@@ -175,6 +193,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      check_calculator_rate_limit: {
+        Args: { p_email: string }
+        Returns: boolean
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]

@@ -39,6 +39,19 @@ export function LeadCaptureForm({ inputs, results }: LeadCaptureFormProps) {
     setError("");
 
     try {
+      // Check rate limit first
+      const { data: isAllowed, error: rateLimitError } = await supabase
+        .rpc('check_calculator_rate_limit', { p_email: email });
+
+      if (rateLimitError) {
+        console.error("Rate limit check error:", rateLimitError);
+        // Continue anyway if rate limit check fails
+      } else if (!isAllowed) {
+        setError("Too many submissions. Please try again later.");
+        setIsSubmitting(false);
+        return;
+      }
+
       const { error: insertError } = await supabase
         .from("calculator_leads")
         .insert({
