@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Calendar, Monitor, FileText, ArrowRight, Phone, Calculator } from "lucide-react";
 import { useGetStartedModal } from "@/hooks/use-get-started-modal";
+import { useSampleReportsModal } from "@/components/SampleReportsModal";
 
 const options = [
   {
@@ -49,22 +50,24 @@ const options = [
   },
   {
     id: "sample-report",
-    title: "Request Sample Report",
-    description: "See examples of our inspection deliverables",
+    title: "View Sample Reports",
+    description: "Download examples of our inspection deliverables",
     icon: FileText,
     iconBg: "bg-primary/20",
     iconColor: "text-primary",
     hoverBorder: "hover:border-primary",
     hoverBg: "hover:bg-primary/5",
-    link: "/contact?request=sample-report",
+    link: "sample-reports-modal",
     external: false,
     badge: null,
     endIcon: ArrowRight,
+    isModal: true,
   },
 ];
 
 export function GetStartedModal() {
   const { isOpen, close } = useGetStartedModal();
+  const { open: openSampleReportsModal } = useSampleReportsModal();
 
   // Close on escape key
   useEffect(() => {
@@ -161,6 +164,20 @@ export function GetStartedModal() {
                     );
                   }
 
+                  if ('isModal' in option && option.isModal) {
+                    return (
+                      <div
+                        key={option.id}
+                        onClick={() => {
+                          close();
+                          openSampleReportsModal();
+                        }}
+                      >
+                        {content}
+                      </div>
+                    );
+                  }
+
                   return (
                     <Link key={option.id} to={option.link} onClick={close}>
                       {content}
@@ -174,11 +191,11 @@ export function GetStartedModal() {
                 <p className="text-center text-sm text-muted-foreground">
                   Questions?{" "}
                   <a
-                    href="tel:+15551234567"
+                    href="tel:+17273620116"
                     className="inline-flex items-center gap-1 text-accent hover:underline"
                   >
                     <Phone className="w-3 h-3" />
-                    Call us at (555) 123-4567
+                    Call us at (727) 362-0116
                   </a>
                 </p>
               </div>

@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { GetStartedModal } from "@/components/GetStartedModal";
+import { SampleReportsModal } from "@/components/SampleReportsModal";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
@@ -54,6 +55,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
         <GetStartedModal />
+        <SampleReportsModal />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
