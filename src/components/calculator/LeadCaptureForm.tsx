@@ -44,7 +44,9 @@ export function LeadCaptureForm({ inputs, results }: LeadCaptureFormProps) {
         .rpc('check_calculator_rate_limit', { p_email: email });
 
       if (rateLimitError) {
-        console.error("Rate limit check error:", rateLimitError);
+        if (import.meta.env.DEV) {
+          console.error("Rate limit check error:", rateLimitError);
+        }
         // Continue anyway if rate limit check fails
       } else if (!isAllowed) {
         setError("Too many submissions. Please try again later.");
@@ -77,7 +79,9 @@ export function LeadCaptureForm({ inputs, results }: LeadCaptureFormProps) {
         }, 1500);
       }
     } catch (err) {
-      console.error("Failed to save lead:", err);
+      if (import.meta.env.DEV) {
+        console.error("Failed to save lead:", err);
+      }
       setError("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);

@@ -83,19 +83,56 @@ export function ChatMessages() {
     }
   };
 
-  // Format markdown-like text (basic support)
+  // Format markdown-like text safely using React components (no dangerouslySetInnerHTML)
   const formatMessage = (text: string) => {
-    return text
-      .split('\n')
-      .map((line, i) => {
-        // Bold text
-        let formatted = line.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-        // Italic
-        formatted = formatted.replace(/\*(.+?)\*/g, '<em>$1</em>');
-        return (
-          <span key={i} className="block" dangerouslySetInnerHTML={{ __html: formatted }} />
-        );
-      });
+    return text.split('\n').map((line, lineIndex) => {
+      // Parse the line into segments for bold and italic
+      const segments: React.ReactNode[] = [];
+      let remaining = line;
+      let segmentIndex = 0;
+
+      while (remaining.length > 0) {
+        // Check for bold first (**text**)
+        const boldMatch = remaining.match(/^\*\*(.+?)\*\*/);
+        if (boldMatch) {
+          segments.push(<strong key={`${lineIndex}-${segmentIndex++}`}>{boldMatch[1]}</strong>);
+          remaining = remaining.slice(boldMatch[0].length);
+          continue;
+        }
+
+        // Check for italic (*text*)
+        const italicMatch = remaining.match(/^\*(.+?)\*/);
+        if (italicMatch) {
+          segments.push(<em key={`${lineIndex}-${segmentIndex++}`}>{italicMatch[1]}</em>);
+          remaining = remaining.slice(italicMatch[0].length);
+          continue;
+        }
+
+        // Find the next special character or end of string
+        const nextBold = remaining.indexOf('**');
+        const nextItalic = remaining.indexOf('*');
+        let nextSpecial = remaining.length;
+        
+        if (nextBold !== -1 && nextBold < nextSpecial) nextSpecial = nextBold;
+        if (nextItalic !== -1 && nextItalic < nextSpecial) nextSpecial = nextItalic;
+
+        // Add plain text up to the next special character
+        if (nextSpecial > 0) {
+          segments.push(<span key={`${lineIndex}-${segmentIndex++}`}>{remaining.slice(0, nextSpecial)}</span>);
+          remaining = remaining.slice(nextSpecial);
+        } else {
+          // Fallback: just add the remaining text to avoid infinite loop
+          segments.push(<span key={`${lineIndex}-${segmentIndex++}`}>{remaining}</span>);
+          break;
+        }
+      }
+
+      return (
+        <span key={lineIndex} className="block">
+          {segments}
+        </span>
+      );
+    });
   };
 
   return (

@@ -37,7 +37,9 @@ export default function AdminLayout() {
         .rpc('has_role', { _user_id: userId, _role: 'admin' });
       
       if (error) {
-        console.error('Error checking admin role:', error);
+        if (import.meta.env.DEV) {
+          console.error('Error checking admin role:', error);
+        }
         return false;
       }
       return data === true;
