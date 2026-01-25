@@ -15,13 +15,13 @@ const Index = () => {
     <Layout>
       <Hero />
       <KPISection />
+      <ClientLogos />
+      <Testimonials />
       <ServicesOverview />
       <DataVisualization />
       <StormResponse />
       <CalculatorTeaser />
       <BlogPreview />
-      <Testimonials />
-      <ClientLogos />
       <CTABanner />
     </Layout>
   );
