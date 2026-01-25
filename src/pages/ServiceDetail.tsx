@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import annualInspectionsImage from "@/assets/annual-inspections.jpg";
 import constructionManagementImage from "@/assets/construction-management.jpg";
@@ -21,6 +22,40 @@ import {
   HeartHandshake,
 } from "lucide-react";
 import { useSampleReportsModal } from "@/components/SampleReportsModal";
+
+// SEO data for each service
+const serviceSEO: Record<string, { title: string; description: string; keywords: string }> = {
+  "construction-management": {
+    title: "Commercial Roof Construction Management",
+    description: "Full-service oversight of commercial roofing projects from bidding through final inspection. We manage contractors, ensure quality, and protect your investment.",
+    keywords: "roof construction management, commercial roofing oversight, contractor management, roof project management, quality assurance"
+  },
+  "due-diligence": {
+    title: "Due Diligence Roof Inspections",
+    description: "Pre-acquisition roof assessments for commercial property buyers. Get detailed condition reports, remaining useful life estimates, and capital expenditure forecasts before closing.",
+    keywords: "due diligence inspection, pre-acquisition roof assessment, commercial property inspection, roof condition report, capital expenditure forecast"
+  },
+  "survey": {
+    title: "Commercial Roof Survey Inspections",
+    description: "Detailed condition surveys to establish baseline roof performance metrics. Comprehensive documentation with photo evidence and maintenance recommendations.",
+    keywords: "roof survey inspection, roof condition assessment, commercial roof documentation, baseline roof inspection"
+  },
+  "annual": {
+    title: "Annual Roof Inspection Programs",
+    description: "Routine maintenance inspections to maximize roof lifespan and maintain warranty compliance. Proactive issue detection saves money and prevents emergencies.",
+    keywords: "annual roof inspection, preventative roof maintenance, warranty compliance inspection, routine roof inspection"
+  },
+  "storm": {
+    title: "Storm Damage Roof Inspections",
+    description: "24-48 hour emergency mobilization after severe weather. Rapid damage assessment and complete insurance documentation to support your claims.",
+    keywords: "storm damage inspection, emergency roof inspection, hurricane roof damage, hail damage assessment, insurance documentation"
+  },
+  "take-off": {
+    title: "Take-off Roof Inspections",
+    description: "Accurate quantity takeoffs for budgeting, bidding, and project planning. Detailed measurements for all roof components and materials.",
+    keywords: "roof takeoff inspection, quantity measurement, roof bidding, project planning, material specifications"
+  }
+};
 
 interface ServiceData {
   title: string;
@@ -196,8 +231,17 @@ export default function ServiceDetail() {
     );
   }
 
+  const seo = slug ? serviceSEO[slug] : null;
+
   return (
     <Layout>
+      {seo && (
+        <SEO 
+          title={seo.title}
+          description={seo.description}
+          keywords={seo.keywords}
+        />
+      )}
       {/* Hero Section with Background Image */}
       <section 
         className="relative h-[450px] flex items-center"

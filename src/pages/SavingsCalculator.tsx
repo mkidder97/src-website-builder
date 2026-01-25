@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { CalculatorForm } from "@/components/calculator/CalculatorForm";
 import { CalculatorResults } from "@/components/calculator/CalculatorResults";
 import { LeadCaptureForm } from "@/components/calculator/LeadCaptureForm";
@@ -33,6 +34,11 @@ export default function SavingsCalculator() {
 
   return (
     <Layout>
+      <SEO 
+        title="ROI Calculator - Calculate Your Roof Management Savings"
+        description="See how proactive roof management impacts your bottom line. Calculate potential savings from extended roof life, avoided emergencies, and competitive bidding."
+        keywords="roof ROI calculator, roof savings calculator, commercial roof cost savings, preventative maintenance ROI"
+      />
       {/* Hero Section */}
       <section className="hero-gradient section-padding pt-32">
         <div className="container-narrow mx-auto">

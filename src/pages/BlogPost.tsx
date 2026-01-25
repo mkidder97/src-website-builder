@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import { Clock, ArrowLeft, Share2, Linkedin, Twitter, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -113,6 +114,13 @@ export default function BlogPost() {
 
   return (
     <Layout>
+      <SEO 
+        title={post.title}
+        description={post.excerpt || `Read ${post.title} on the Southern Roof Consultants blog.`}
+        keywords={post.category ? `${post.category}, commercial roofing, roof management` : 'commercial roofing, roof management'}
+        type="article"
+        image={post.cover_image_url || undefined}
+      />
       {/* Hero */}
       <section className="relative">
         {post.cover_image_url ? (

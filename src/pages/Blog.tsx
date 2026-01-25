@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import { Clock, ArrowRight, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -83,6 +84,11 @@ export default function Blog() {
 
   return (
     <Layout>
+      <SEO 
+        title="Insights & Resources"
+        description="Expert perspectives on commercial roof management, industry trends, and best practices for institutional property owners."
+        keywords="commercial roofing blog, roof management insights, property management resources"
+      />
       {/* Hero Section */}
       <section className="hero-gradient section-padding pt-32">
         <div className="container-narrow mx-auto">
