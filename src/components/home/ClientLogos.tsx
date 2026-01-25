@@ -23,8 +23,11 @@ export function ClientLogos() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
-            Trusted by Industry Leaders
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
+            Our track record speaks for itself.
+          </h2>
+          <p className="text-muted-foreground text-lg">
+            We've built lasting relationships with the nation's largest commercial property owners.
           </p>
         </motion.div>
 
