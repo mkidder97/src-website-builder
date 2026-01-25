@@ -1,21 +1,12 @@
 import { motion } from "framer-motion";
 
-// Import logos
-import prologisLogo from "@/assets/clients/prologis.png";
-import cushmanLogo from "@/assets/clients/cushman-wakefield.svg";
-
-interface Client {
-  name: string;
-  logo?: string;
-}
-
-const clients: Client[] = [
-  { name: "Prologis", logo: prologisLogo },
+const clients = [
+  { name: "Prologis" },
   { name: "Realty Income" },
   { name: "CBRE" },
   { name: "Sealy & Company" },
   { name: "Colliers International" },
-  { name: "Cushman & Wakefield", logo: cushmanLogo },
+  { name: "Cushman & Wakefield" },
   { name: "Link Logistics" },
   { name: "EastGroup Properties" },
 ];
@@ -49,17 +40,9 @@ export function ClientLogos() {
               transition={{ duration: 0.4, delay: index * 0.05 }}
               className="flex items-center justify-center h-16 px-4 w-full"
             >
-              {client.logo ? (
-                <img 
-                  src={client.logo} 
-                  alt={`${client.name} logo`}
-                  className="h-10 md:h-12 max-w-[160px] object-contain opacity-80 hover:opacity-100 transition-all duration-300"
-                />
-              ) : (
-                <div className="text-base md:text-lg font-semibold text-muted-foreground/50 hover:text-muted-foreground/80 transition-colors text-center">
-                  {client.name}
-                </div>
-              )}
+              <div className="text-base md:text-lg font-semibold text-muted-foreground/50 hover:text-muted-foreground/80 transition-colors text-center">
+                {client.name}
+              </div>
             </motion.div>
           ))}
         </div>
