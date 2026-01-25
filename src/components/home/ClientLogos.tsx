@@ -1,13 +1,21 @@
 import { motion } from "framer-motion";
 
-const clients = [
-  { name: "Prologis" },
+// Import logos
+import prologisLogo from "@/assets/clients/prologis.png";
+import cushmanLogo from "@/assets/clients/cushman-wakefield.svg";
+
+interface Client {
+  name: string;
+  logo?: string;
+}
+
+const clients: Client[] = [
+  { name: "Prologis", logo: prologisLogo },
   { name: "Realty Income" },
-  { name: "DCT Industrial" },
   { name: "CBRE" },
   { name: "Sealy & Company" },
   { name: "Colliers International" },
-  { name: "Cushman & Wakefield" },
+  { name: "Cushman & Wakefield", logo: cushmanLogo },
   { name: "Link Logistics" },
   { name: "EastGroup Properties" },
 ];
@@ -31,7 +39,7 @@ export function ClientLogos() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-items-center">
           {clients.map((client, index) => (
             <motion.div
               key={client.name}
@@ -39,11 +47,19 @@ export function ClientLogos() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="flex items-center justify-center h-16 px-4"
+              className="flex items-center justify-center h-16 px-4 w-full"
             >
-              <div className="text-xl font-bold text-muted-foreground/40 hover:text-muted-foreground/60 transition-colors">
-                {client.name}
-              </div>
+              {client.logo ? (
+                <img 
+                  src={client.logo} 
+                  alt={`${client.name} logo`}
+                  className="h-10 md:h-12 max-w-[160px] object-contain grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
+                />
+              ) : (
+                <div className="text-base md:text-lg font-semibold text-muted-foreground/50 hover:text-muted-foreground/80 transition-colors text-center">
+                  {client.name}
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
