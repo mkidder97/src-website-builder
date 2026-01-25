@@ -3,10 +3,13 @@ import { motion } from "framer-motion";
 const clients = [
   { name: "Prologis" },
   { name: "Realty Income" },
-  { name: "GLP" },
   { name: "DCT Industrial" },
   { name: "CBRE" },
-  { name: "JLL" },
+  { name: "Sealy & Company" },
+  { name: "Colliers International" },
+  { name: "Cushman & Wakefield" },
+  { name: "Link Logistics" },
+  { name: "EastGroup Properties" },
 ];
 
 export function ClientLogos() {
