@@ -53,7 +53,7 @@ export function ClientLogos() {
                 <img 
                   src={client.logo} 
                   alt={`${client.name} logo`}
-                  className="h-10 md:h-12 max-w-[160px] object-contain grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
+                  className="h-10 md:h-12 max-w-[160px] object-contain opacity-80 hover:opacity-100 transition-all duration-300"
                 />
               ) : (
                 <div className="text-base md:text-lg font-semibold text-muted-foreground/50 hover:text-muted-foreground/80 transition-colors text-center">
