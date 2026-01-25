@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -62,6 +63,11 @@ export default function Contact() {
   if (submitted) {
     return (
       <Layout>
+        <SEO 
+          title="Contact Us"
+          description="Get in touch with Southern Roof Consultants. Request a consultation for your commercial roofing portfolio. Serving 28 states nationwide."
+          keywords="contact roof consultant, commercial roof consultation, roof inspection quote"
+        />
         <section className="min-h-[80vh] flex items-center justify-center section-padding">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -92,6 +98,11 @@ export default function Contact() {
 
   return (
     <Layout>
+      <SEO 
+        title="Contact Us"
+        description="Get in touch with Southern Roof Consultants. Request a consultation for your commercial roofing portfolio. Serving 28 states nationwide."
+        keywords="contact roof consultant, commercial roof consultation, roof inspection quote"
+      />
       {/* Hero Section with Background */}
       <section 
         className="relative h-[350px] flex items-end"

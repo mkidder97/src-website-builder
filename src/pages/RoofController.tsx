@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { VideoShowcase } from "@/components/roof-controller/VideoShowcase";
 import {
@@ -51,6 +52,11 @@ const features = [
 export default function RoofController() {
   return (
     <Layout>
+      <SEO 
+        title="Roof Controller - Portfolio Management Platform"
+        description="Real-time visibility into your entire roof portfolio. Track conditions, manage work orders, and forecast capital expenses with our proprietary software platform."
+        keywords="roof management software, portfolio management platform, roof tracking system, capital planning software, work order management"
+      />
       {/* Hero Section with Dashboard Screenshot */}
       <section 
         className="relative min-h-[70vh] flex items-center"

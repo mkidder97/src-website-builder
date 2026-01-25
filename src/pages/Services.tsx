@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, Star } from "lucide-react";
 import annualInspectionsImage from "@/assets/annual-inspections.jpg";
@@ -80,6 +81,11 @@ const services = [
 export default function Services() {
   return (
     <Layout>
+      <SEO 
+        title="Commercial Roof Inspection Services"
+        description="Comprehensive roof consulting services including due diligence, annual inspections, storm response, and construction management for institutional property owners."
+        keywords="roof inspection services, commercial roof survey, property due diligence, storm damage inspection, construction management"
+      />
       {/* Hero Section with Background Image */}
       <section 
         className="relative h-[400px] flex items-center"
