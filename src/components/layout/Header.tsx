@@ -122,6 +122,16 @@ export function Header() {
             </Link>
 
             <Link
+              to="/about"
+              className={cn(
+                "text-sm font-medium transition-colors link-underline",
+                isActive("/about") ? "text-accent" : "text-primary-foreground hover:text-accent"
+              )}
+            >
+              About
+            </Link>
+
+            <Link
               to="/contact"
               className={cn(
                 "text-sm font-medium transition-colors link-underline",
@@ -205,6 +215,13 @@ export function Header() {
                 className="text-primary-foreground hover:text-accent transition-colors"
               >
                 Blog
+              </Link>
+              <Link
+                to="/about"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-primary-foreground hover:text-accent transition-colors"
+              >
+                About
               </Link>
               <Link
                 to="/contact"
