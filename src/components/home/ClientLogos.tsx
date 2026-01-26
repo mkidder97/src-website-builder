@@ -9,7 +9,6 @@ const clients = [
   { name: "Cushman & Wakefield" },
   { name: "Link Logistics" },
   { name: "EastGroup Properties" },
-  { name: "Stream Realty Partners" },
 ];
 
 export function ClientLogos() {
