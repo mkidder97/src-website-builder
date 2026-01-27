@@ -59,10 +59,7 @@ export default function RoofController() {
       />
       {/* Hero Section with Dashboard Screenshot */}
       <section 
-        className="relative min-h-[70vh] flex items-center"
-        style={{
-          background: 'linear-gradient(135deg, hsl(222, 47%, 8%) 0%, hsl(222, 47%, 11%) 50%, hsl(222, 47%, 14%) 100%)',
-        }}
+        className="relative min-h-[70vh] flex items-center hero-gradient"
       >
         <div className="container-narrow mx-auto section-padding relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -83,7 +80,7 @@ export default function RoofController() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-4"
               >
                 Roof Controller
               </motion.h1>
@@ -101,7 +98,7 @@ export default function RoofController() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-lg text-gray-400 max-w-xl mb-8"
+                className="text-lg text-primary-foreground/75 max-w-xl mb-8"
               >
                 Real-time visibility into your entire roof portfolio. Track conditions, manage work orders, 
                 forecast capital expenses—all in one place.
@@ -123,7 +120,7 @@ export default function RoofController() {
                   asChild 
                   variant="outline" 
                   size="lg" 
-                  className="border-white/30 text-white bg-white/10 hover:bg-white/20"
+                  className="border-primary-foreground/30 text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20"
                 >
                   <a href="https://portal.roofcontroller.com" target="_blank" rel="noopener noreferrer">
                     Client Portal Login
