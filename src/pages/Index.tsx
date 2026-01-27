@@ -10,6 +10,7 @@ import { BlogPreview } from "@/components/home/BlogPreview";
 import { Testimonials } from "@/components/home/Testimonials";
 import { ClientLogos } from "@/components/home/ClientLogos";
 import { CTABanner } from "@/components/home/CTABanner";
+import { VideoShowcase } from "@/components/shared/VideoShowcase";
 
 const Index = () => {
   return (
@@ -24,6 +25,12 @@ const Index = () => {
       <KPISection />
       <ClientLogos />
       <Testimonials />
+      <VideoShowcase
+        title="Protecting Commercial Roofing Assets Nationwide"
+        description="See how our team delivers institutional-grade inspections and construction management for some of the nation's largest REITs and property managers."
+        placeholderSubtitle="Company overview coming soon"
+        iframeTitle="Southern Roof Consultants Company Overview"
+      />
       <ServicesOverview />
       <DataVisualization />
       <StormResponse />
