@@ -244,13 +244,11 @@ export default function ServiceDetail() {
       )}
       {/* Hero Section with Background Image */}
       <section 
-        className="relative h-[450px] flex items-center"
+        className="relative h-[450px] flex items-center bg-cover bg-center"
         role="img"
         aria-label={`${service.title} service hero image`}
         style={{
-          backgroundImage: `linear-gradient(to right, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.65)), url('${service.heroImage}')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundImage: `linear-gradient(to right, hsl(var(--navy-dark) / 0.92), hsl(var(--navy-dark) / 0.65)), url('${service.heroImage}')`,
         }}
       >
         <div className="container-narrow mx-auto section-padding">

@@ -6,13 +6,11 @@ import { Button } from "@/components/ui/button";
 export function CalculatorTeaser() {
   return (
     <section 
-      className="section-padding relative"
+      className="section-padding relative bg-cover bg-center"
       role="img"
       aria-label="Industrial warehouse facility exterior"
       style={{
-        backgroundImage: `linear-gradient(to right, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.88)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=80')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundImage: `linear-gradient(to right, hsl(var(--navy-dark) / 0.92), hsl(var(--navy-dark) / 0.88)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=80')`,
       }}
     >
       <div className="container-narrow mx-auto relative z-10">
