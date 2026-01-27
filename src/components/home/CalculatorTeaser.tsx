@@ -7,6 +7,8 @@ export function CalculatorTeaser() {
   return (
     <section 
       className="section-padding relative"
+      role="img"
+      aria-label="Industrial warehouse facility exterior"
       style={{
         backgroundImage: `linear-gradient(to right, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.88)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=80')`,
         backgroundSize: 'cover',
@@ -26,7 +28,8 @@ export function CalculatorTeaser() {
             <div className="w-24 h-24 rounded-2xl overflow-hidden flex-shrink-0">
               <img 
                 src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=200&q=80"
-                alt="Financial analysis"
+                alt="Financial charts and analysis on computer screen"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>

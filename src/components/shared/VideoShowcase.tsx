@@ -70,7 +70,8 @@ export function VideoShowcase({
                 <>
                   <img 
                     src={thumbnailUrl} 
-                    alt={title}
+                    alt={`Video thumbnail for ${title}`}
+                    loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors" />

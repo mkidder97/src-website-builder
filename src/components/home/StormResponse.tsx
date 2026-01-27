@@ -24,6 +24,8 @@ export function StormResponse() {
   return (
     <section 
       className="relative section-padding"
+      role="img"
+      aria-label="Dark stormy sky over commercial property"
       style={{
         backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), url('https://images.unsplash.com/photo-1527482797697-8795b05a13fe?w=1920&q=80')`,
         backgroundSize: 'cover',

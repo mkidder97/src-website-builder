@@ -142,7 +142,7 @@ export default function RoofController() {
             >
               <img 
                 src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" 
-                alt="Roof Controller Dashboard"
+                alt="Roof Controller platform dashboard showing portfolio analytics"
                 className="rounded-xl shadow-2xl border border-white/10"
               />
             </motion.div>
@@ -243,7 +243,8 @@ export default function RoofController() {
                 <div className="aspect-video rounded-xl overflow-hidden mb-4 group-hover:shadow-lg group-hover:shadow-accent/10 transition-shadow">
                   <img 
                     src={screenshot.image}
-                    alt={screenshot.title}
+                    alt={`${screenshot.title} - screenshot of Roof Controller interface`}
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -309,7 +310,8 @@ export default function RoofController() {
             >
               <img 
                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80"
-                alt="Commercial buildings"
+                alt="Aerial view of commercial buildings in urban landscape"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </motion.div>

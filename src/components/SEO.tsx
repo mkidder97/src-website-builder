@@ -1,8 +1,15 @@
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
-// Base URL - update this when connecting a custom domain
-const BASE_URL = 'https://src-foundry-hub.lovable.app';
+// Base URL - uses VITE_SITE_URL env var if set, otherwise window.location.origin
+const getBaseUrl = () => {
+  if (import.meta.env.VITE_SITE_URL) {
+    return import.meta.env.VITE_SITE_URL;
+  }
+  return window.location.origin;
+};
+
+const BASE_URL = getBaseUrl();
 const SITE_NAME = 'Southern Roof Consultants';
 const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.jpg`;
 
