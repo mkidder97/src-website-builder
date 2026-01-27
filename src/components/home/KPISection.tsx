@@ -42,7 +42,7 @@ const kpiDetails: Record<string, KPIDetail> = {
   "properties": {
     icon: Building2,
     lines: [
-      "Since 2010",
+      "Since 2002",
       "Averaging 400+ inspections annually"
     ]
   },

@@ -8,7 +8,7 @@ const teamMembers = [
     title: "Director of Operations",
     image:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
-    bio: "15+ years in commercial roofing and construction management. Leads our inspection teams and client relationships.",
+    bio: "23+ years in commercial roofing and construction management. Leads our inspection teams and client relationships.",
     linkedin: null,
   },
   {
