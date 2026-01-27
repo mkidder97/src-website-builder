@@ -76,6 +76,15 @@ export default {
           DEFAULT: "hsl(var(--warm-gray))",
           dark: "hsl(var(--warm-gray-dark))",
         },
+        forest: {
+          DEFAULT: "hsl(var(--forest))",
+          dark: "hsl(var(--forest-dark))",
+          light: "hsl(var(--forest-light))",
+        },
+        copper: {
+          DEFAULT: "hsl(var(--copper))",
+          dark: "hsl(var(--copper-dark))",
+        },
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],

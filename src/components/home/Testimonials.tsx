@@ -15,7 +15,7 @@ export function Testimonials() {
     <section 
       className="section-padding"
       style={{
-        background: 'linear-gradient(135deg, hsl(222, 47%, 8%) 0%, hsl(222, 47%, 11%) 50%, hsl(222, 47%, 14%) 100%)',
+        background: 'linear-gradient(135deg, hsl(var(--navy-dark)) 0%, hsl(var(--navy)) 50%, hsl(var(--navy-light)) 100%)',
       }}
     >
       <div className="container-narrow mx-auto">
