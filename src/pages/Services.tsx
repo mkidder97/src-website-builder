@@ -88,11 +88,11 @@ export default function Services() {
       />
       {/* Hero Section with Background Image */}
       <section 
-        className="relative h-[400px] flex items-center"
+        className="relative h-[400px] flex items-center bg-cover bg-center"
+        role="img"
+        aria-label="Commercial building rooftop with city skyline"
         style={{
-          backgroundImage: `linear-gradient(to right, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75)), url('https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1920&q=80')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundImage: `linear-gradient(to right, hsl(var(--navy-dark) / 0.92), hsl(var(--navy-dark) / 0.75)), url('https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1920&q=80')`,
         }}
       >
         <div className="container-narrow mx-auto section-padding">

@@ -124,13 +124,11 @@ export default function Contact() {
       />
       {/* Hero Section with Background */}
       <section 
-        className="relative h-[350px] flex items-end"
+        className="relative h-[350px] flex items-end bg-cover bg-center"
         role="img"
         aria-label="Modern office workspace interior"
         style={{
-          backgroundImage: `linear-gradient(to right, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundImage: `linear-gradient(to right, hsl(var(--navy-dark) / 0.92), hsl(var(--navy-dark) / 0.75)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80')`,
         }}
       >
         <div className="container-narrow mx-auto section-padding pb-12">

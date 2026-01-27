@@ -17,6 +17,8 @@ import Login from "./pages/Login";
 import SavingsCalculator from "./pages/SavingsCalculator";
 import RoofController from "./pages/RoofController";
 import About from "./pages/About";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminKPIs from "./pages/admin/AdminKPIs";
@@ -46,6 +48,8 @@ const App = () => (
           <Route path="/roi-calculator" element={<Navigate to="/savings-calculator" replace />} />
           <Route path="/roof-controller" element={<RoofController />} />
           <Route path="/about" element={<About />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
           
           {/* Admin Routes */}
           <Route path="/admin" element={<AdminLayout />}>
