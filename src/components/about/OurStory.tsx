@@ -54,7 +54,7 @@ export function OurStory() {
               className="rounded-xl shadow-lg w-full"
             />
             <div className="absolute -bottom-6 -left-6 bg-accent text-accent-foreground p-6 rounded-xl shadow-lg">
-              <div className="text-3xl font-bold">15+</div>
+              <div className="text-3xl font-bold">23+</div>
               <div className="text-sm opacity-90">Years of Excellence</div>
             </div>
           </motion.div>

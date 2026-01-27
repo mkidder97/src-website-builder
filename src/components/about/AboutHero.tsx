@@ -20,7 +20,7 @@ export function AboutHero() {
             About Us
           </span>
           <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mt-2 mb-4">
-            Protecting Commercial Roofing Assets Since 2010
+            Protecting Commercial Roofing Assets Since 2002
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl">
             We're the trusted partner for institutional investors who demand
