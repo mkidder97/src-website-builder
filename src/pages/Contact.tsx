@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
 import { z } from "zod";
 
@@ -49,15 +50,33 @@ export default function Contact() {
 
     setLoading(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const { error: insertError } = await supabase
+        .from("contact_submissions")
+        .insert({
+          name: result.data.name,
+          email: result.data.email,
+          phone: result.data.phone || null,
+          company: result.data.company || null,
+          message: result.data.message,
+        });
 
-    setLoading(false);
-    setSubmitted(true);
-    toast({
-      title: "Message Sent",
-      description: "We'll get back to you within 24 hours.",
-    });
+      if (insertError) throw insertError;
+
+      setSubmitted(true);
+      toast({
+        title: "Message Sent",
+        description: "We'll get back to you within 24 hours.",
+      });
+    } catch (err) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -106,6 +125,8 @@ export default function Contact() {
       {/* Hero Section with Background */}
       <section 
         className="relative h-[350px] flex items-end"
+        role="img"
+        aria-label="Modern office workspace interior"
         style={{
           backgroundImage: `linear-gradient(to right, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80')`,
           backgroundSize: 'cover',

@@ -39,6 +39,7 @@ export function ChatWidget() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={open}
+            aria-label="Open chat support"
             className="fixed bottom-6 right-6 z-40 flex items-center gap-2 px-5 py-3 bg-accent text-accent-foreground rounded-full shadow-lg hover:shadow-xl transition-shadow"
           >
             <MessageCircle className="w-5 h-5" />
@@ -67,6 +68,9 @@ export function ChatWidget() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
               transition={{ duration: 0.2 }}
+              role="dialog"
+              aria-label="Chat support"
+              aria-modal="true"
               className="fixed z-50 
                 inset-4 lg:inset-auto 
                 lg:bottom-6 lg:right-6 

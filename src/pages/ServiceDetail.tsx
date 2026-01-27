@@ -245,6 +245,8 @@ export default function ServiceDetail() {
       {/* Hero Section with Background Image */}
       <section 
         className="relative h-[450px] flex items-center"
+        role="img"
+        aria-label={`${service.title} service hero image`}
         style={{
           backgroundImage: `linear-gradient(to right, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.65)), url('${service.heroImage}')`,
           backgroundSize: 'cover',
@@ -332,7 +334,12 @@ export default function ServiceDetail() {
                 >
                   {step.image ? (
                     <div className="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 ring-4 ring-accent/20">
-                      <img src={step.image} alt={step.title} className="w-full h-full object-cover" />
+                      <img 
+                        src={step.image} 
+                        alt={`${step.title} - process step illustration`}
+                        loading="lazy"
+                        className="w-full h-full object-cover" 
+                      />
                     </div>
                   ) : (
                     <div className="w-24 h-24 mx-auto rounded-full bg-accent/10 flex items-center justify-center mb-4 ring-4 ring-accent/20">
@@ -391,7 +398,8 @@ export default function ServiceDetail() {
             >
               <img 
                 src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=80" 
-                alt="Sample report preview"
+                alt="Sample roof inspection report showing condition ratings and findings"
+                loading="lazy"
                 className="rounded-xl shadow-2xl"
               />
               <div className="absolute top-4 right-4 bg-accent text-white px-3 py-1 rounded-full text-sm font-medium">

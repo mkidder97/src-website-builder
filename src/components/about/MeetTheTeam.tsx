@@ -66,7 +66,8 @@ export function MeetTheTeam() {
               <div className="w-48 h-48 mx-auto rounded-full overflow-hidden mb-4 ring-4 ring-secondary group-hover:ring-accent/30 transition-all duration-300">
                 <img
                   src={member.image}
-                  alt={member.name}
+                  alt={`Professional headshot of ${member.name}, ${member.title}`}
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>

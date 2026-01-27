@@ -9,6 +9,8 @@ export function Hero() {
   return (
     <section 
       className="relative min-h-[90vh] flex items-center overflow-hidden hero-gradient"
+      role="img"
+      aria-label="Aerial view of modern commercial building skyline"
       style={{
         backgroundImage: `linear-gradient(to right, hsl(var(--navy-dark) / 0.95), hsl(var(--navy) / 0.7)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80')`,
         backgroundSize: 'cover',

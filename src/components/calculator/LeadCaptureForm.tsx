@@ -47,8 +47,12 @@ export function LeadCaptureForm({ inputs, results }: LeadCaptureFormProps) {
         if (import.meta.env.DEV) {
           console.error("Rate limit check error:", rateLimitError);
         }
-        // Continue anyway if rate limit check fails
-      } else if (!isAllowed) {
+        toast.error("Unable to verify submission. Please try again.");
+        setIsSubmitting(false);
+        return;
+      }
+      
+      if (!isAllowed) {
         setError("Too many submissions. Please try again later.");
         setIsSubmitting(false);
         return;

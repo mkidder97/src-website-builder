@@ -85,7 +85,8 @@ export function ServicesOverview() {
                   <div className="h-48 overflow-hidden relative">
                     <img 
                       src={service.imageUrl} 
-                      alt={service.title}
+                      alt={`${service.title} - commercial roof inspection service`}
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     {isFeatured && (

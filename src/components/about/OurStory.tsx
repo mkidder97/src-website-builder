@@ -50,6 +50,7 @@ export function OurStory() {
             <img
               src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80"
               alt="SRC team inspecting commercial roof"
+              loading="lazy"
               className="rounded-xl shadow-lg w-full"
             />
             <div className="absolute -bottom-6 -left-6 bg-accent text-accent-foreground p-6 rounded-xl shadow-lg">
