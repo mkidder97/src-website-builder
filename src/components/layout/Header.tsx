@@ -4,6 +4,7 @@ import { Menu, X, ChevronDown, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useGetStartedModal } from "@/hooks/use-get-started-modal";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const services = [
   { name: "Construction Management", slug: "construction-management", featured: true },
@@ -142,8 +143,9 @@ export function Header() {
             </Link>
           </div>
 
-          {/* Client Login & CTA Button */}
+          {/* Theme Toggle, Client Login & CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
+            <ThemeToggle />
             <a
               href="https://portal.roofcontroller.com"
               target="_blank"
@@ -230,6 +232,10 @@ export function Header() {
               >
                 Contact
               </Link>
+              <div className="flex items-center justify-between py-2">
+                <span className="text-muted-foreground text-sm">Theme</span>
+                <ThemeToggle />
+              </div>
               <a
                 href="https://portal.roofcontroller.com"
                 target="_blank"

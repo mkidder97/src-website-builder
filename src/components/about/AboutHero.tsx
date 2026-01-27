@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 export function AboutHero() {
   return (
     <section
-      className="relative h-[400px] md:h-[450px] flex items-center bg-cover bg-center"
+      className="relative h-[400px] md:h-[450px] flex items-center bg-cover bg-center hero-gradient"
       style={{
         backgroundImage: `linear-gradient(to right, hsl(var(--navy-dark) / 0.95), hsl(var(--navy) / 0.8)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80')`,
       }}
