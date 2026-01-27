@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { VideoShowcase } from "@/components/roof-controller/VideoShowcase";
+import { VideoShowcase } from "@/components/shared/VideoShowcase";
 import {
   ArrowRight,
   Monitor,
@@ -198,8 +198,12 @@ export default function RoofController() {
       </section>
 
       {/* Video Showcase Section */}
-      {/* TODO: Replace with actual YouTube/Vimeo embed URL when video is ready */}
-      <VideoShowcase videoUrl="" />
+      <VideoShowcase
+        title="See Roof Controller in Action"
+        description="Watch our team walk through the platform and hear from portfolio managers who use Roof Controller to manage their roofing assets."
+        placeholderSubtitle="Platform walkthrough & client testimonials"
+        iframeTitle="Roof Controller Platform Overview"
+      />
 
       {/* Screenshot Gallery with Photos */}
       <section className="bg-background section-padding">
