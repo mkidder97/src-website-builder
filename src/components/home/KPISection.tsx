@@ -56,7 +56,7 @@ const kpiDetails: Record<string, KPIDetail> = {
   "years": {
     icon: Calendar,
     lines: [
-      "Founded 2010, trusted by top REITs",
+      "Founded 2002, trusted by top REITs",
       "Industry leaders in commercial roof consulting"
     ]
   },
@@ -69,10 +69,8 @@ const kpiDetails: Record<string, KPIDetail> = {
   },
 };
 
-function AnimatedNumber({ value, suffix, delay = 0 }: { value: string; suffix: string; delay?: number }) {
+function AnimatedNumber({ value, suffix, delay = 0, isInView }: { value: string; suffix: string; delay?: number; isInView: boolean }) {
   const [displayValue, setDisplayValue] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const numericValue = parseInt(value.replace(/[^0-9]/g, ""), 10) || 0;
 
   useEffect(() => {
@@ -104,14 +102,14 @@ function AnimatedNumber({ value, suffix, delay = 0 }: { value: string; suffix: s
   }, [isInView, numericValue, delay]);
 
   return (
-    <span ref={ref} className="tabular-nums">
+    <span className="tabular-nums">
       {displayValue.toLocaleString()}
       {suffix}
     </span>
   );
 }
 
-function KPICard({ kpi, index, onClick }: { kpi: KPI; index: number; onClick: () => void }) {
+function KPICard({ kpi, index, onClick, isInView }: { kpi: KPI; index: number; onClick: () => void; isInView: boolean }) {
   const detail = kpiDetails[kpi.key];
   const Icon = detail?.icon || Building2;
   
@@ -135,7 +133,7 @@ function KPICard({ kpi, index, onClick }: { kpi: KPI; index: number; onClick: ()
         </div>
         
         <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-accent mb-2 group-hover:text-accent transition-colors">
-          <AnimatedNumber value={kpi.value} suffix={kpi.suffix} delay={index} />
+          <AnimatedNumber value={kpi.value} suffix={kpi.suffix} delay={index} isInView={isInView} />
         </div>
         <p className="text-sm text-muted-foreground group-hover:text-primary-foreground transition-colors">
           {kpi.label}
@@ -267,6 +265,7 @@ export function KPISection() {
                 kpi={kpi} 
                 index={index} 
                 onClick={() => setSelectedKPI(kpi)}
+                isInView={isInView}
               />
             ))}
           </div>
