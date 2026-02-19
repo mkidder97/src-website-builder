@@ -18,9 +18,4 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  define: {
-    // Fallback: ensure Supabase env vars are always available
-    'import.meta.env.VITE_SUPABASE_URL': JSON.stringify(process.env.VITE_SUPABASE_URL || "https://mumphlldikfibcnunhia.supabase.co"),
-    'import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY': JSON.stringify(process.env.VITE_SUPABASE_PUBLISHABLE_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11bXBobGxkaWtmaWJjbnVuaGlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxODgxODIsImV4cCI6MjA4NDc2NDE4Mn0.nWRzlQF1fVV6N5F_o4qdBaaSISdmD_wI8h4ogW30HYE"),
-  },
 }));
