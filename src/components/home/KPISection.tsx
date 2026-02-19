@@ -225,23 +225,6 @@ export function KPISection() {
     fetchKPIs();
   }, []);
 
-  if (loading) {
-    return (
-      <section className="bg-primary py-20">
-        <div className="container-narrow mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="text-center animate-pulse">
-                <div className="h-12 bg-navy-light rounded mb-2" />
-                <div className="h-4 bg-navy-light rounded w-24 mx-auto" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <>
       <section ref={sectionRef} className="bg-primary py-20 overflow-hidden">
@@ -258,28 +241,40 @@ export function KPISection() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
-            {kpis.map((kpi, index) => (
-              <KPICard 
-                key={kpi.id} 
-                kpi={kpi} 
-                index={index} 
-                onClick={() => setSelectedKPI(kpi)}
-                isInView={isInView}
-              />
-            ))}
-          </div>
-          
-          {/* Subtle pulse animation indicator */}
-          {isInView && (
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 2 }}
-              className="text-center text-xs text-muted-foreground/50 mt-8"
-            >
-              Click any stat for more details
-            </motion.p>
+          {loading ? (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="text-center animate-pulse">
+                  <div className="h-12 bg-navy-light rounded mb-2" />
+                  <div className="h-4 bg-navy-light rounded w-24 mx-auto" />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+                {kpis.map((kpi, index) => (
+                  <KPICard 
+                    key={kpi.id} 
+                    kpi={kpi} 
+                    index={index} 
+                    onClick={() => setSelectedKPI(kpi)}
+                    isInView={isInView}
+                  />
+                ))}
+              </div>
+              
+              {isInView && (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 2 }}
+                  className="text-center text-xs text-muted-foreground/50 mt-8"
+                >
+                  Click any stat for more details
+                </motion.p>
+              )}
+            </>
           )}
         </div>
       </section>
