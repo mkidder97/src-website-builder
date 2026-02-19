@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
@@ -7,9 +7,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { Turnstile } from "@marsidev/react-turnstile";
 import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
 import { z } from "zod";
+
+const TURNSTILE_SITE_KEY = "0x4AAAAAACfZm7d1sYEtl7e0";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -23,12 +25,15 @@ export default function Contact() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [formLoadTime] = useState(() => Date.now());
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     company: "",
     phone: "",
     message: "",
+    website: "", // honeypot
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -51,27 +56,39 @@ export default function Contact() {
     setLoading(true);
 
     try {
-      const { error: insertError } = await supabase
-        .from("contact_submissions")
-        .insert({
-          name: result.data.name,
-          email: result.data.email,
-          phone: result.data.phone || null,
-          company: result.data.company || null,
-          message: result.data.message,
-        });
+      const elapsed = Math.floor((Date.now() - formLoadTime) / 1000);
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/submit-contact`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: result.data.name,
+            email: result.data.email,
+            phone: result.data.phone || "",
+            company: result.data.company || "",
+            message: result.data.message,
+            turnstileToken,
+            website: formData.website,
+            elapsed,
+          }),
+        }
+      );
 
-      if (insertError) throw insertError;
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error || "Failed to send message");
+      }
 
       setSubmitted(true);
       toast({
         title: "Message Sent",
         description: "We'll get back to you within 24 hours.",
       });
-    } catch (err) {
+    } catch (err: any) {
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: err.message || "Failed to send message. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -104,7 +121,8 @@ export default function Contact() {
             <Button
               onClick={() => {
                 setSubmitted(false);
-                setFormData({ name: "", email: "", company: "", phone: "", message: "" });
+                setFormData({ name: "", email: "", company: "", phone: "", message: "", website: "" });
+                setTurnstileToken(null);
               }}
             >
               Send Another Message
@@ -217,6 +235,20 @@ export default function Contact() {
               className="lg:col-span-2"
             >
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Honeypot field - hidden from real users */}
+                <div style={{ position: "absolute", left: "-9999px" }} aria-hidden="true">
+                  <label htmlFor="website">Website</label>
+                  <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    value={formData.website}
+                    onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <Label htmlFor="name">Name *</Label>
@@ -278,7 +310,14 @@ export default function Contact() {
                   )}
                 </div>
 
-                <Button type="submit" variant="cta" size="lg" disabled={loading}>
+                <Turnstile
+                  siteKey={TURNSTILE_SITE_KEY}
+                  onSuccess={(token) => setTurnstileToken(token)}
+                  onError={() => setTurnstileToken(null)}
+                  onExpire={() => setTurnstileToken(null)}
+                />
+
+                <Button type="submit" variant="cta" size="lg" disabled={loading || !turnstileToken}>
                   {loading ? (
                     "Sending..."
                   ) : (
