@@ -1,21 +1,17 @@
 
 
-# Create `vercel.json` Security Headers and SPA Routing
+# Update robots.txt and sitemap.xml
 
 ## What This Does
 
-Create a single file (`vercel.json`) in the project root with the exact configuration you provided. This adds:
+Replace the existing `public/robots.txt` and `public/sitemap.xml` files with the exact content you provided. The robots.txt is simplified and the sitemap is streamlined (removed `lastmod`/`changefreq`, removed the `take-off` service, added `roof-controller`, adjusted priorities).
 
-- **SPA routing**: All routes rewrite to `/index.html` so React Router handles navigation
-- **Security headers**: X-Content-Type-Options, X-Frame-Options, XSS Protection, Referrer-Policy, Permissions-Policy, Content-Security-Policy, and HSTS
-
-These headers only take effect when deployed to Vercel and will not affect the Lovable preview.
-
-## Technical Details
+## Files Modified
 
 | File | Action |
 |------|--------|
-| `vercel.json` | Create new file with the exact JSON content provided |
+| `public/robots.txt` | Overwrite with simplified version |
+| `public/sitemap.xml` | Overwrite with updated URL list and priorities |
 
-No other files are modified. No dependencies added.
+No other files or dependencies changed.
 
