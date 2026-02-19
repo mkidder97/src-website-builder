@@ -1,17 +1,14 @@
 
 
-# Update robots.txt and sitemap.xml
+# Delete `.env` File
 
-## What This Does
+Remove the `.env` file from the repository. The environment variables (`VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`, `VITE_SUPABASE_PROJECT_ID`) are managed automatically by Lovable Cloud and do not need to be committed. The `.gitignore` already prevents `.env` files from being tracked going forward.
 
-Replace the existing `public/robots.txt` and `public/sitemap.xml` files with the exact content you provided. The robots.txt is simplified and the sitemap is streamlined (removed `lastmod`/`changefreq`, removed the `take-off` service, added `roof-controller`, adjusted priorities).
-
-## Files Modified
+## Changes
 
 | File | Action |
 |------|--------|
-| `public/robots.txt` | Overwrite with simplified version |
-| `public/sitemap.xml` | Overwrite with updated URL list and priorities |
+| `.env` | Delete |
 
-No other files or dependencies changed.
+No other files are modified.
 
