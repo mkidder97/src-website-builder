@@ -85,8 +85,8 @@ export default function Blog() {
   return (
     <Layout>
       <SEO 
-        title="Insights & Resources"
-        description="Expert perspectives on commercial roof management, industry trends, and best practices for institutional property owners."
+        title="Commercial Roofing Insights & Resources | SRC Blog"
+        description="Expert articles on commercial roof asset management, capital planning, inspection best practices, and industry trends from the Southern Roof Consultants team."
         keywords="commercial roofing blog, roof management insights, property management resources"
       />
       {/* Hero Section */}
