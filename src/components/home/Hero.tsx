@@ -15,7 +15,7 @@ export function Hero() {
         muted
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover z-0 pointer-events-none"
-        src="https://assets.mixkit.co/videos/4010/4010-720.mp4"
+        src="/videos/hero-construction.mp4"
       />
       <div
         className="absolute inset-0 z-[1]"
