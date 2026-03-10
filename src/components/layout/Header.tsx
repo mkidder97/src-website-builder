@@ -64,15 +64,16 @@ export function Header() {
     setServicesOpen(false);
   }, [location.pathname]);
 
+  const isHome = location.pathname === "/";
   const isActive = (path: string) => location.pathname === path;
   const isServicesActive = location.pathname.startsWith("/services");
 
-  const headerBg =
-    isMobile || isScrolled ? "rgba(10,20,14,0.97)" : "transparent";
-  const headerBorder =
-    isMobile || isScrolled
-      ? "1px solid rgba(255,255,255,0.08)"
-      : "1px solid transparent";
+  // On non-home pages, always show dark background (no transparent hero behind the header)
+  const needsSolidBg = !isHome || isMobile || isScrolled;
+  const headerBg = needsSolidBg ? "rgba(10,20,14,0.97)" : "transparent";
+  const headerBorder = needsSolidBg
+    ? "1px solid rgba(255,255,255,0.08)"
+    : "1px solid transparent";
 
   return (
     <header
