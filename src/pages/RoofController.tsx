@@ -53,8 +53,8 @@ export default function RoofController() {
   return (
     <Layout>
       <SEO 
-        title="Roof Controller - Portfolio Management Platform"
-        description="Real-time visibility into your entire roof portfolio. Track conditions, manage work orders, and forecast capital expenses with our proprietary software platform."
+        title="Roof Controller — Real-Time Portfolio Intelligence"
+        description="Our proprietary Roof Controller platform gives institutional clients real-time visibility into their entire roofing portfolio. Data, dashboards, and decisions in one place."
         keywords="roof management software, portfolio management platform, roof tracking system, capital planning software, work order management"
       />
       {/* Hero Section with Dashboard Screenshot */}

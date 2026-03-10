@@ -82,8 +82,8 @@ export default function Services() {
   return (
     <Layout>
       <SEO 
-        title="Commercial Roof Inspection Services"
-        description="Comprehensive roof consulting services including due diligence, annual inspections, storm response, and construction management for institutional property owners."
+        title="Commercial Roof Inspection & Consulting Services"
+        description="From due diligence to construction management, SRC delivers institutional-grade roof consulting services for commercial property portfolios nationwide."
         keywords="roof inspection services, commercial roof survey, property due diligence, storm damage inspection, construction management"
       />
       {/* Hero Section with Background Image */}
