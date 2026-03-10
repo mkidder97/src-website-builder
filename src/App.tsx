@@ -17,6 +17,7 @@ import Login from "./pages/Login";
 import SavingsCalculator from "./pages/SavingsCalculator";
 import RoofController from "./pages/RoofController";
 import About from "./pages/About";
+import Projects from "./pages/Projects";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import AdminLayout from "./pages/admin/AdminLayout";
