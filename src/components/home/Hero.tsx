@@ -7,17 +7,21 @@ import { useGetStartedModal } from "@/hooks/use-get-started-modal";
 export function Hero() {
   const { open: openGetStartedModal } = useGetStartedModal();
   return (
-    <section 
-      className="relative min-h-[90vh] flex items-center overflow-hidden hero-gradient"
-      role="img"
-      aria-label="Aerial view of modern commercial building skyline"
-      style={{
-        backgroundImage: `linear-gradient(to right, hsl(var(--navy-dark) / 0.95), hsl(var(--navy) / 0.7)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-    >
-      <div className="container-narrow mx-auto section-padding relative z-10">
+    <section className="relative h-screen flex items-center overflow-hidden">
+      {/* TODO: Replace src with actual SRC field footage file when available */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover z-0 pointer-events-none"
+        src="https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4"
+      />
+      <div
+        className="absolute inset-0 z-[1]"
+        style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.65) 100%)' }}
+      />
+      <div className="container-narrow mx-auto section-padding relative z-[2]">
         <div className="max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
