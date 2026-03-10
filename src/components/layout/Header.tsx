@@ -208,6 +208,13 @@ export function Header() {
                 </Link>
               ))}
               <Link
+                to="/projects"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-primary-foreground hover:text-accent transition-colors"
+              >
+                Featured Projects
+              </Link>
+              <Link
                 to="/roof-controller"
                 onClick={() => setMobileMenuOpen(false)}
                 className="text-primary-foreground hover:text-accent transition-colors"

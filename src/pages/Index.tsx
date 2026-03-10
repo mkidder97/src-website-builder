@@ -26,6 +26,7 @@ const Index = () => {
       <KPISection />
       <ClientLogos />
       <Testimonials />
+      <FeaturedProjects />
       <VideoShowcase
         title="Protecting Commercial Roofing Assets Nationwide"
         description="See how our team delivers institutional-grade inspections and construction management for some of the nation's largest REITs and property managers."

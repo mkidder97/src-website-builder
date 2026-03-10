@@ -48,6 +48,7 @@ const App = () => (
           <Route path="/savings-calculator" element={<SavingsCalculator />} />
           <Route path="/roi-calculator" element={<Navigate to="/savings-calculator" replace />} />
           <Route path="/roof-controller" element={<RoofController />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
