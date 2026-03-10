@@ -100,8 +100,8 @@ export default function Contact() {
     return (
       <Layout>
         <SEO 
-          title="Contact Us"
-          description="Get in touch with Southern Roof Consultants. Request a consultation for your commercial roofing portfolio. Serving 28 states nationwide."
+          title="Contact Southern Roof Consultants | Request a Consultation"
+          description="Get in touch with SRC to schedule a consultation, request a roof assessment, or learn more about our institutional roof consulting services."
           keywords="contact roof consultant, commercial roof consultation, roof inspection quote"
         />
         <section className="min-h-[80vh] flex items-center justify-center section-padding">
