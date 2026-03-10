@@ -76,25 +76,57 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-wrap gap-8 mt-12 pt-12 border-t border-white/10"
+            className="flex flex-wrap items-start gap-0 mt-12 pt-12 border-t border-white/10"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center">
-                <Shield className="w-6 h-6 text-accent" />
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-white">$3B+</p>
-                <p className="text-sm text-gray-400">Assets Protected</p>
-              </div>
+            <div className="pr-10">
+              <p
+                className="text-white leading-none"
+                style={{ fontSize: 42, fontWeight: 300, letterSpacing: "-0.03em" }}
+              >
+                $3B<span className="text-accent" style={{ fontSize: 24 }}>+</span>
+              </p>
+              <p
+                className="mt-2"
+                style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}
+              >
+                Assets Protected
+              </p>
             </div>
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center">
-                <Building2 className="w-6 h-6 text-accent" />
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-white">4,600+</p>
-                <p className="text-sm text-gray-400">Roofs Managed</p>
-              </div>
+            <div
+              className="hidden sm:block self-stretch"
+              style={{ width: 1, background: "rgba(255,255,255,0.12)", marginRight: 40 }}
+            />
+            <div className="pr-10">
+              <p
+                className="text-white leading-none"
+                style={{ fontSize: 42, fontWeight: 300, letterSpacing: "-0.03em" }}
+              >
+                4,600<span className="text-accent" style={{ fontSize: 24 }}>+</span>
+              </p>
+              <p
+                className="mt-2"
+                style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}
+              >
+                Roofs Managed
+              </p>
+            </div>
+            <div
+              className="hidden sm:block self-stretch"
+              style={{ width: 1, background: "rgba(255,255,255,0.12)", marginRight: 40 }}
+            />
+            <div>
+              <p
+                className="text-white leading-none"
+                style={{ fontSize: 42, fontWeight: 300, letterSpacing: "-0.03em" }}
+              >
+                28<span className="text-accent" style={{ fontSize: 24 }}>+</span>
+              </p>
+              <p
+                className="mt-2"
+                style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}
+              >
+                States Served
+              </p>
             </div>
           </motion.div>
         </div>
