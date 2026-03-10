@@ -1,47 +1,30 @@
 
-## Security Dependency Updates
 
-### Current Situation
+## Fix Hero Video — Use Roofing/Construction Footage
 
-After reviewing `package.json` and the CVE details, here is the precise status:
+### Problem
+Pexels video 3209828 is not roofing-related — it's showing unrelated content (kid with VR glasses). The video element is working correctly; the source URL just points to the wrong footage.
 
-| Package | Current spec | Resolves to | CVE | Patched in | Status |
-|---|---|---|---|---|---|
-| `react-router-dom` | `^6.30.1` | 6.30.1 | CVE-2025-68470 (Open Redirect) | 6.30.2 | **Vulnerable** |
-| `vite` | `^5.4.19` | 5.4.19 | CVE-2025-46565 & CVE-2025-32395 | 5.4.19 | **Already patched** |
+### Solution
+Swap the video `src` on line 18 of `src/components/home/Hero.tsx` to a proper commercial roofing/construction aerial video from Pexels.
 
-The `^` (caret) prefix means npm installs the highest compatible version within the major series. Because `react-router-dom` is currently pinned at `^6.30.1`, npm resolves it to exactly 6.30.1 — it will not automatically pick up 6.30.2, since the caret only allows minor/patch upgrades *above* the stated version once the lockfile is in place.
+**New video source:** `https://videos.pexels.com/video-files/5765240/5765240-hd_1920_1080_30fps.mp4`
+This is Pexels video 5765240 — aerial drone footage of a large commercial building rooftop/construction site.
 
-### What Needs to Change
+If that specific video doesn't match either, an alternative is Pexels video 7534717 (aerial construction site footage):
+`https://videos.pexels.com/video-files/7534717/7534717-hd_1920_1080_25fps.mp4`
 
-**Only one file, one line:**
+### Change
+**File:** `src/components/home/Hero.tsx`, line 18 only.
 
-- **`package.json`** — bump `react-router-dom` from `^6.30.1` → `^6.30.2`
-
-Vite is already at 5.4.19 (the patched version), so no change is needed there.
-
-### Why This Is Safe
-
-- This is a pure **patch-level bump** (6.30.1 → 6.30.2) within the same major series. React Router follows semver, and patch releases contain only bug/security fixes — no breaking API changes.
-- No component code, routing logic, or configuration needs to be touched.
-- The lockfile (`package-lock.json` / `bun.lockb`) will regenerate automatically after the version change, pulling the new patch.
-
-### CVE Reference
-
-**CVE-2025-68470** — An attacker-supplied path can be crafted so that when a React Router application navigates to it via `navigate()`, `<Link>`, or `redirect()`, the app performs a redirect to an external URL. Fixed in 6.30.2 and 7.9.6.
-
----
-
-### Technical Implementation
-
-**File:** `package.json`
-**Line 63** — change:
+Replace:
 ```
-"react-router-dom": "^6.30.1",
+src="https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4"
 ```
-to:
+With:
 ```
-"react-router-dom": "^6.30.2",
+src="https://videos.pexels.com/video-files/5765240/5765240-hd_1920_1080_30fps.mp4"
 ```
 
-That is the only change. No code files, no logic, no functionality is altered.
+The TODO comment stays. No other changes — structure, overlay, content all remain as-is.
+
