@@ -83,18 +83,6 @@ export function Testimonials() {
                 >
                   {testimonial.title}
                 </p>
-                <p
-                  className="mt-1"
-                  style={{
-                    fontSize: 11,
-                    fontWeight: 600,
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    color: "hsl(var(--accent) / 0.7)",
-                  }}
-                >
-                  {testimonial.tenure}
-                </p>
               </div>
             </div>
           ))}
