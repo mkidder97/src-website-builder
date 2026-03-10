@@ -93,6 +93,16 @@ export function Header() {
             </div>
 
             <Link
+              to="/projects"
+              className={cn(
+                "text-sm font-medium transition-colors link-underline",
+                isActive("/projects") ? "text-accent" : "text-primary-foreground hover:text-accent"
+              )}
+            >
+              Featured Projects
+            </Link>
+
+            <Link
               to="/roof-controller"
               className={cn(
                 "text-sm font-medium transition-colors link-underline",
@@ -197,6 +207,13 @@ export function Header() {
                   {service.name}
                 </Link>
               ))}
+              <Link
+                to="/projects"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-primary-foreground hover:text-accent transition-colors"
+              >
+                Featured Projects
+              </Link>
               <Link
                 to="/roof-controller"
                 onClick={() => setMobileMenuOpen(false)}

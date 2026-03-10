@@ -11,6 +11,7 @@ import { Testimonials } from "@/components/home/Testimonials";
 import { ClientLogos } from "@/components/home/ClientLogos";
 import { CTABanner } from "@/components/home/CTABanner";
 import { VideoShowcase } from "@/components/shared/VideoShowcase";
+import { FeaturedProjects } from "@/components/home/FeaturedProjects";
 
 const Index = () => {
   return (
@@ -25,6 +26,7 @@ const Index = () => {
       <KPISection />
       <ClientLogos />
       <Testimonials />
+      <FeaturedProjects />
       <VideoShowcase
         title="Protecting Commercial Roofing Assets Nationwide"
         description="See how our team delivers institutional-grade inspections and construction management for some of the nation's largest REITs and property managers."

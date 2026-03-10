@@ -17,6 +17,7 @@ import Login from "./pages/Login";
 import SavingsCalculator from "./pages/SavingsCalculator";
 import RoofController from "./pages/RoofController";
 import About from "./pages/About";
+import Projects from "./pages/Projects";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import AdminLayout from "./pages/admin/AdminLayout";
@@ -47,6 +48,7 @@ const App = () => (
           <Route path="/savings-calculator" element={<SavingsCalculator />} />
           <Route path="/roi-calculator" element={<Navigate to="/savings-calculator" replace />} />
           <Route path="/roof-controller" element={<RoofController />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
