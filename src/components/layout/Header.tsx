@@ -1,279 +1,302 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, LogIn } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Menu, X } from "lucide-react";
 import { useGetStartedModal } from "@/hooks/use-get-started-modal";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const services = [
-  { name: "Construction Management", slug: "construction-management", featured: true },
-  { name: "Due Diligence", slug: "due-diligence" },
-  { name: "Survey Inspections", slug: "survey" },
-  { name: "Annual Inspections", slug: "annual" },
-  { name: "Storm Inspections", slug: "storm" },
+  { name: "Construction Management", to: "/services/construction-management", dot: true },
+  { name: "Due Diligence", to: "/services/due-diligence" },
+  { name: "Survey Inspections", to: "/services/survey" },
+  { name: "Annual Inspections", to: "/services/annual" },
+  { name: "Storm Inspections", to: "/services/storm" },
 ];
 
+const navLinks = [
+  { label: "Featured Projects", to: "/projects" },
+  { label: "Platform", to: "/roof-controller" },
+  { label: "About", to: "/about" },
+  { label: "Contact", to: "/contact" },
+];
+
+const mobileLinks = [
+  { label: "Services", to: "/services" },
+  { label: "Featured Projects", to: "/projects" },
+  { label: "Platform", to: "/roof-controller" },
+  { label: "About", to: "/about" },
+  { label: "Contact", to: "/contact" },
+  { label: "Blog", to: "/blog" },
+  { label: "Calculator", to: "/savings-calculator" },
+  { label: "Clients", to: "https://portal.roofcontroller.com", external: true },
+];
+
+const linkStyle =
+  "text-[11px] font-semibold tracking-[0.14em] uppercase transition-colors duration-200";
+
 export function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const servicesRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+  const isMobile = useIsMobile();
   const { open: openGetStartedModal } = useGetStartedModal();
 
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
+        setServicesOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  useEffect(() => {
+    setMobileOpen(false);
+    setServicesOpen(false);
+  }, [location.pathname]);
+
   const isActive = (path: string) => location.pathname === path;
+  const isServicesActive = location.pathname.startsWith("/services");
+
+  const headerBg =
+    isMobile || isScrolled ? "rgba(10,20,14,0.97)" : "transparent";
+  const headerBorder =
+    isMobile || isScrolled
+      ? "1px solid rgba(255,255,255,0.08)"
+      : "1px solid transparent";
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md border-b border-navy-light">
-      <nav className="container-narrow mx-auto section-padding py-4">
+    <header
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{
+        backgroundColor: headerBg,
+        borderBottom: headerBorder,
+        transition: "background-color 0.4s ease, border-color 0.4s ease",
+      }}
+    >
+      <nav className="max-w-7xl mx-auto px-8" style={{ paddingTop: 20, paddingBottom: 20 }}>
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <span className="text-xl font-bold text-primary-foreground">
-              SRC <span className="text-muted-foreground font-normal">|</span>{" "}
-              <span className="font-normal text-muted-foreground text-sm">
-                Southern Roof Consultants
-              </span>
+          <Link to="/" className="flex items-center shrink-0">
+            <span
+              className="text-white"
+              style={{ fontWeight: 800, fontSize: 22, letterSpacing: "-0.02em" }}
+            >
+              SRC
+            </span>
+            <span
+              className="inline-block align-middle"
+              style={{
+                width: 1,
+                height: 18,
+                background: "rgba(255,255,255,0.3)",
+                margin: "0 10px",
+              }}
+            />
+            <span
+              style={{
+                fontWeight: 300,
+                fontSize: 13,
+                color: "rgba(255,255,255,0.65)",
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+              }}
+            >
+              Southern Roof Consultants
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
-            <Link
-              to="/"
-              className={cn(
-                "text-sm font-medium transition-colors link-underline",
-                isActive("/") ? "text-accent" : "text-primary-foreground hover:text-accent"
-              )}
-            >
-              Home
-            </Link>
-
-            {/* Services Dropdown */}
-            <div className="relative">
+          {/* Desktop nav */}
+          <div className="hidden lg:flex items-center gap-7">
+            {/* Services dropdown */}
+            <div ref={servicesRef} className="relative">
               <button
-                onClick={() => setServicesOpen(!servicesOpen)}
-                onBlur={() => setTimeout(() => setServicesOpen(false), 200)}
-                className={cn(
-                  "flex items-center gap-1 text-sm font-medium transition-colors",
-                  location.pathname.includes("/services")
-                    ? "text-accent"
-                    : "text-primary-foreground hover:text-accent"
-                )}
+                onClick={() => setServicesOpen((v) => !v)}
+                className={`${linkStyle} ${
+                  isServicesActive
+                    ? "nav-link-active"
+                    : "text-white/80 hover:text-white"
+                }`}
               >
                 Services
-                <ChevronDown className={cn("w-4 h-4 transition-transform", servicesOpen && "rotate-180")} />
               </button>
               {servicesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-56 bg-card rounded-lg shadow-xl border border-border p-2 animate-scale-in">
-                  <Link
-                    to="/services"
-                    className="block px-4 py-2 text-sm text-foreground hover:bg-secondary rounded-md transition-colors"
-                  >
-                    All Services
-                  </Link>
-                  <div className="h-px bg-border my-2" />
-                  {services.map((service) => (
+                <div
+                  className="absolute"
+                  style={{
+                    top: "calc(100% + 16px)",
+                    left: -16,
+                    background: "rgba(10,20,14,0.98)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    borderRadius: 4,
+                    padding: 8,
+                    minWidth: 220,
+                    boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
+                  }}
+                >
+                  {services.map((s) => (
                     <Link
-                      key={service.slug}
-                      to={`/services/${service.slug}`}
-                      className={`block px-4 py-2 text-sm rounded-md transition-colors ${
-                        'featured' in service && service.featured 
-                          ? 'text-accent font-medium hover:bg-accent/10' 
-                          : 'text-foreground hover:bg-secondary'
-                      }`}
+                      key={s.to}
+                      to={s.to}
+                      className="block rounded-[3px] transition-colors duration-150 hover:bg-white/[0.06]"
+                      style={{
+                        padding: "10px 16px",
+                        fontSize: 12,
+                        fontWeight: 500,
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                        color: "rgba(255,255,255,0.70)",
+                      }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.color = "white")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.color = "rgba(255,255,255,0.70)")
+                      }
                     >
-                      {service.name}
-                      {'featured' in service && service.featured && (
-                        <span className="ml-2 text-xs bg-accent/20 text-accent px-1.5 py-0.5 rounded">Popular</span>
+                      {s.dot && (
+                        <span className="text-accent mr-2 text-[10px]">●</span>
                       )}
+                      {s.name}
                     </Link>
                   ))}
                 </div>
               )}
             </div>
 
-            <Link
-              to="/projects"
-              className={cn(
-                "text-sm font-medium transition-colors link-underline",
-                isActive("/projects") ? "text-accent" : "text-primary-foreground hover:text-accent"
-              )}
-            >
-              Featured Projects
-            </Link>
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`${linkStyle} ${
+                  isActive(link.to)
+                    ? "nav-link-active"
+                    : "text-white/80 hover:text-white"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
 
-            <Link
-              to="/roof-controller"
-              className={cn(
-                "text-sm font-medium transition-colors link-underline",
-                isActive("/roof-controller") ? "text-accent" : "text-primary-foreground hover:text-accent"
-              )}
-            >
-              Platform
-            </Link>
-
-            <Link
-              to="/savings-calculator"
-              className={cn(
-                "text-sm font-medium transition-colors link-underline",
-                isActive("/savings-calculator") ? "text-accent" : "text-primary-foreground hover:text-accent"
-              )}
-            >
-              Calculator
-            </Link>
-
-            <Link
-              to="/blog"
-              className={cn(
-                "text-sm font-medium transition-colors link-underline",
-                isActive("/blog") ? "text-accent" : "text-primary-foreground hover:text-accent"
-              )}
-            >
-              Blog
-            </Link>
-
-            <Link
-              to="/about"
-              className={cn(
-                "text-sm font-medium transition-colors link-underline",
-                isActive("/about") ? "text-accent" : "text-primary-foreground hover:text-accent"
-              )}
-            >
-              About
-            </Link>
-
-            <Link
-              to="/contact"
-              className={cn(
-                "text-sm font-medium transition-colors link-underline",
-                isActive("/contact") ? "text-accent" : "text-primary-foreground hover:text-accent"
-              )}
-            >
-              Contact
-            </Link>
-          </div>
-
-          {/* Theme Toggle, Client Login & CTA Button */}
-          <div className="hidden lg:flex items-center gap-4">
-            <ThemeToggle />
+            {/* Clients — external */}
             <a
               href="https://portal.roofcontroller.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary-foreground transition-colors"
+              className={`${linkStyle} text-white/80 hover:text-white`}
             >
-              <LogIn className="w-4 h-4" />
-              Client Login
+              Clients
             </a>
-            <Button variant="cta" onClick={openGetStartedModal}>
-              Get Started
-            </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Right side — desktop */}
+          <div className="hidden lg:flex items-center">
+            <button
+              onClick={openGetStartedModal}
+              className="uppercase transition-all duration-200"
+              style={{
+                background: "transparent",
+                border: "1px solid rgba(255,255,255,0.45)",
+                color: "white",
+                fontSize: 11,
+                fontWeight: 600,
+                letterSpacing: "0.12em",
+                padding: "8px 18px",
+                borderRadius: 2,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "white";
+                e.currentTarget.style.color = "#0a140e";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.color = "white";
+              }}
+            >
+              Request Consultation
+            </button>
+          </div>
+
+          {/* Mobile toggle */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden text-primary-foreground p-2"
+            className="lg:hidden text-white"
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden mt-4 py-4 border-t border-navy-light animate-fade-in">
-            <div className="flex flex-col gap-4">
-              <Link
-                to="/"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-primary-foreground hover:text-accent transition-colors"
-              >
-                Home
-              </Link>
-              <Link
-                to="/services"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-primary-foreground hover:text-accent transition-colors"
-              >
-                Services
-              </Link>
-              {services.map((service) => (
-                <Link
-                  key={service.slug}
-                  to={`/services/${service.slug}`}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-muted-foreground hover:text-accent transition-colors pl-4"
+        {/* Mobile menu */}
+        {mobileOpen && (
+          <div
+            className="lg:hidden mt-4"
+            style={{
+              background: "rgba(10,20,14,0.99)",
+              borderRadius: 4,
+              marginLeft: -32,
+              marginRight: -32,
+              padding: "8px 32px 24px",
+            }}
+          >
+            {mobileLinks.map((link) =>
+              link.external ? (
+                <a
+                  key={link.to}
+                  href={link.to}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${linkStyle} block text-white/80 hover:text-white`}
+                  style={{
+                    padding: "14px 0",
+                    borderBottom: "1px solid rgba(255,255,255,0.06)",
+                  }}
                 >
-                  {service.name}
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className={`${linkStyle} block ${
+                    isActive(link.to)
+                      ? "nav-link-active"
+                      : "text-white/80 hover:text-white"
+                  }`}
+                  style={{
+                    padding: "14px 0",
+                    borderBottom: "1px solid rgba(255,255,255,0.06)",
+                  }}
+                >
+                  {link.label}
                 </Link>
-              ))}
-              <Link
-                to="/projects"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-primary-foreground hover:text-accent transition-colors"
-              >
-                Featured Projects
-              </Link>
-              <Link
-                to="/roof-controller"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-primary-foreground hover:text-accent transition-colors"
-              >
-                Platform
-              </Link>
-              <Link
-                to="/savings-calculator"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-primary-foreground hover:text-accent transition-colors"
-              >
-                Calculator
-              </Link>
-              <Link
-                to="/blog"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-primary-foreground hover:text-accent transition-colors"
-              >
-                Blog
-              </Link>
-              <Link
-                to="/about"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-primary-foreground hover:text-accent transition-colors"
-              >
-                About
-              </Link>
-              <Link
-                to="/contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-primary-foreground hover:text-accent transition-colors"
-              >
-                Contact
-              </Link>
-              <div className="flex items-center justify-between py-2">
-                <span className="text-muted-foreground text-sm">Theme</span>
-                <ThemeToggle />
-              </div>
-              <a
-                href="https://portal.roofcontroller.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors"
-              >
-                <LogIn className="w-4 h-4" />
-                Client Login
-              </a>
-              <Button
-                variant="cta"
-                className="w-full mt-2"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  openGetStartedModal();
-                }}
-              >
-                Get Started
-              </Button>
-            </div>
+              )
+            )}
+            <button
+              onClick={openGetStartedModal}
+              className="w-full mt-6 uppercase transition-all duration-200"
+              style={{
+                background: "transparent",
+                border: "1px solid rgba(255,255,255,0.45)",
+                color: "white",
+                fontSize: 11,
+                fontWeight: 600,
+                letterSpacing: "0.12em",
+                padding: "12px 18px",
+                borderRadius: 2,
+              }}
+            >
+              Request Consultation
+            </button>
           </div>
         )}
       </nav>
