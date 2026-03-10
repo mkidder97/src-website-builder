@@ -11,6 +11,7 @@ import { Testimonials } from "@/components/home/Testimonials";
 import { ClientLogos } from "@/components/home/ClientLogos";
 import { CTABanner } from "@/components/home/CTABanner";
 import { VideoShowcase } from "@/components/shared/VideoShowcase";
+import { FeaturedProjects } from "@/components/home/FeaturedProjects";
 
 const Index = () => {
   return (
