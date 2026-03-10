@@ -7,7 +7,7 @@ import { useGetStartedModal } from "@/hooks/use-get-started-modal";
 export function Hero() {
   const { open: openGetStartedModal } = useGetStartedModal();
   return (
-    <section className="relative h-screen flex items-center overflow-hidden">
+    <section className="relative h-screen flex items-center overflow-hidden -mt-20">
       {/* TODO: Replace src with actual SRC field footage file when available */}
       <video
         autoPlay
