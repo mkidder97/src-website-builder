@@ -1,47 +1,31 @@
 
-## Security Dependency Updates
 
-### Current Situation
+## Header Rewrite, Footer Updates & CSS Additions
 
-After reviewing `package.json` and the CVE details, here is the precise status:
+### Correction Applied
+- **CLIENTS** nav link → external link to `https://portal.roofcontroller.com` (target="_blank", noopener noreferrer), styled identically to other nav links
+- **Right side** simplified: remove CLIENT LOGIN entirely (redundant with CLIENTS nav link), keep only REQUEST CONSULTATION outlined button
 
-| Package | Current spec | Resolves to | CVE | Patched in | Status |
-|---|---|---|---|---|---|
-| `react-router-dom` | `^6.30.1` | 6.30.1 | CVE-2025-68470 (Open Redirect) | 6.30.2 | **Vulnerable** |
-| `vite` | `^5.4.19` | 5.4.19 | CVE-2025-46565 & CVE-2025-32395 | 5.4.19 | **Already patched** |
+### Files to Change
 
-The `^` (caret) prefix means npm installs the highest compatible version within the major series. Because `react-router-dom` is currently pinned at `^6.30.1`, npm resolves it to exactly 6.30.1 — it will not automatically pick up 6.30.2, since the caret only allows minor/patch upgrades *above* the stated version once the lockfile is in place.
+**1. `src/components/layout/Header.tsx` — Full rewrite**
+- Scroll listener: `isScrolled` state at 60px threshold, transparent → `rgba(10,20,14,0.97)` transition. Mobile always dark.
+- Logo: bold "SRC" + 1px divider + thin uppercase "Southern Roof Consultants"
+- Desktop nav (6 items, gap-7): SERVICES (dropdown), FEATURED PROJECTS, PLATFORM, ABOUT, CONTACT, CLIENTS (external link, new tab)
+- All nav text: 11px, 600 weight, 0.14em tracking, uppercase. Active = `nav-link-active` class. No `link-underline`, no ChevronDown.
+- Services dropdown: dark panel `rgba(10,20,14,0.98)`, teal dot on Construction Management, no Popular badge
+- Right side: only REQUEST CONSULTATION outlined button → calls `openGetStartedModal`
+- Mobile: dark panel, all pages (including Blog/Calculator), REQUEST CONSULTATION at bottom. No ThemeToggle.
+- Container: `max-w-7xl mx-auto px-8`, py-20px
 
-### What Needs to Change
+**2. `src/components/layout/Footer.tsx` — Style updates**
+- Background `#060f09`, wordmark logo matching header style
+- Headings: 11px/700/0.18em/uppercase/`rgba(255,255,255,0.40)`
+- Links: 13px, `rgba(255,255,255,0.55)`, hover 0.90
+- Bottom bar: `rgba(0,0,0,0.25)` bg, subtle border, 12px text
+- Add "Featured Projects" link in Quick Links
 
-**Only one file, one line:**
+**3. `src/index.css` — Add utilities**
+- `.nav-link-active` with teal bottom border
+- `html { scroll-behavior: smooth; }`
 
-- **`package.json`** — bump `react-router-dom` from `^6.30.1` → `^6.30.2`
-
-Vite is already at 5.4.19 (the patched version), so no change is needed there.
-
-### Why This Is Safe
-
-- This is a pure **patch-level bump** (6.30.1 → 6.30.2) within the same major series. React Router follows semver, and patch releases contain only bug/security fixes — no breaking API changes.
-- No component code, routing logic, or configuration needs to be touched.
-- The lockfile (`package-lock.json` / `bun.lockb`) will regenerate automatically after the version change, pulling the new patch.
-
-### CVE Reference
-
-**CVE-2025-68470** — An attacker-supplied path can be crafted so that when a React Router application navigates to it via `navigate()`, `<Link>`, or `redirect()`, the app performs a redirect to an external URL. Fixed in 6.30.2 and 7.9.6.
-
----
-
-### Technical Implementation
-
-**File:** `package.json`
-**Line 63** — change:
-```
-"react-router-dom": "^6.30.1",
-```
-to:
-```
-"react-router-dom": "^6.30.2",
-```
-
-That is the only change. No code files, no logic, no functionality is altered.
