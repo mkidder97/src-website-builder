@@ -3,132 +3,194 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="container-narrow mx-auto section-padding py-16">
+    <footer style={{ backgroundColor: "#060f09" }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <div className="mb-4">
-              <span className="text-xl font-bold">
-                SRC <span className="text-muted-foreground font-normal">|</span>{" "}
-                <span className="font-normal text-muted-foreground text-sm">
-                  Southern Roof Consultants
-                </span>
+            <div className="mb-4 flex items-center">
+              <span
+                className="text-white"
+                style={{ fontWeight: 800, fontSize: 22, letterSpacing: "-0.02em" }}
+              >
+                SRC
+              </span>
+              <span
+                className="inline-block align-middle"
+                style={{
+                  width: 1,
+                  height: 18,
+                  background: "rgba(255,255,255,0.3)",
+                  margin: "0 10px",
+                }}
+              />
+              <span
+                style={{
+                  fontWeight: 300,
+                  fontSize: 13,
+                  color: "rgba(255,255,255,0.65)",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Southern Roof Consultants
               </span>
             </div>
-            <p className="text-muted-foreground mb-6 max-w-md">
+            <p
+              className="mb-6 max-w-md"
+              style={{ fontSize: 13, color: "rgba(255,255,255,0.55)" }}
+            >
               Protecting over $3B in commercial roofing assets across the nation. We provide
               comprehensive roof inspection and consulting services for institutional investors and
               property managers.
             </p>
             <div className="space-y-3">
-              <div className="flex items-center gap-3 text-muted-foreground">
-                <Phone className="w-5 h-5 text-accent" />
-                <a href="tel:+17273620116" className="hover:text-accent transition-colors">(727) 362-0116</a>
+              <div className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-accent flex-shrink-0" />
+                <a
+                  href="tel:+17273620116"
+                  className="transition-colors"
+                  style={{ fontSize: 13, color: "rgba(255,255,255,0.55)" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.90)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}
+                >
+                  (727) 362-0116
+                </a>
               </div>
-              <div className="flex items-center gap-3 text-muted-foreground">
-                <Mail className="w-5 h-5 text-accent" />
-                <a href="mailto:info@southernroof.biz" className="hover:text-accent transition-colors">info@southernroof.biz</a>
+              <div className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-accent flex-shrink-0" />
+                <a
+                  href="mailto:info@southernroof.biz"
+                  className="transition-colors"
+                  style={{ fontSize: 13, color: "rgba(255,255,255,0.55)" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.90)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}
+                >
+                  info@southernroof.biz
+                </a>
               </div>
-              <div className="flex items-start gap-3 text-muted-foreground">
+              <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span>875 Pasadena Ave S, Suite A<br />South Pasadena, FL 33707</span>
+                <span style={{ fontSize: 13, color: "rgba(255,255,255,0.55)" }}>
+                  875 Pasadena Ave S, Suite A<br />South Pasadena, FL 33707
+                </span>
               </div>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold mb-4">Quick Links</h3>
+            <h3
+              style={{
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.40)",
+                marginBottom: 20,
+              }}
+            >
+              Quick Links
+            </h3>
             <ul className="space-y-3">
-              <li>
-                <Link to="/" className="text-muted-foreground hover:text-accent transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-muted-foreground hover:text-accent transition-colors">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog" className="text-muted-foreground hover:text-accent transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-muted-foreground hover:text-accent transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-muted-foreground hover:text-accent transition-colors">
-                  Contact
-                </Link>
-              </li>
+              {[
+                { label: "Home", to: "/" },
+                { label: "Services", to: "/services" },
+                { label: "Featured Projects", to: "/projects" },
+                { label: "Blog", to: "/blog" },
+                { label: "About", to: "/about" },
+                { label: "Contact", to: "/contact" },
+              ].map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    className="transition-colors"
+                    style={{ fontSize: 13, color: "rgba(255,255,255,0.55)" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.90)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="font-semibold mb-4">Our Services</h3>
+            <h3
+              style={{
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.40)",
+                marginBottom: 20,
+              }}
+            >
+              Our Services
+            </h3>
             <ul className="space-y-3">
-              <li>
-                <Link
-                  to="/services/construction-management"
-                  className="text-muted-foreground hover:text-accent transition-colors"
-                >
-                  Construction Management
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services/due-diligence"
-                  className="text-muted-foreground hover:text-accent transition-colors"
-                >
-                  Due Diligence
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services/survey"
-                  className="text-muted-foreground hover:text-accent transition-colors"
-                >
-                  Survey Inspections
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services/annual"
-                  className="text-muted-foreground hover:text-accent transition-colors"
-                >
-                  Annual Inspections
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services/storm"
-                  className="text-muted-foreground hover:text-accent transition-colors"
-                >
-                  Storm Inspections
-                </Link>
-              </li>
+              {[
+                { label: "Construction Management", to: "/services/construction-management" },
+                { label: "Due Diligence", to: "/services/due-diligence" },
+                { label: "Survey Inspections", to: "/services/survey" },
+                { label: "Annual Inspections", to: "/services/annual" },
+                { label: "Storm Inspections", to: "/services/storm" },
+              ].map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    className="transition-colors"
+                    style={{ fontSize: 13, color: "rgba(255,255,255,0.55)" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.90)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-navy-light flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
+        <div
+          className="mt-12 flex flex-col md:flex-row justify-between items-center gap-4"
+          style={{
+            background: "rgba(0,0,0,0.25)",
+            borderTop: "1px solid rgba(255,255,255,0.06)",
+            padding: "20px 24px",
+            marginLeft: -16,
+            marginRight: -16,
+            borderRadius: "0 0 0 0",
+          }}
+        >
+          <p
+            style={{
+              fontSize: 12,
+              letterSpacing: "0.04em",
+              color: "rgba(255,255,255,0.40)",
+            }}
+          >
             © {new Date().getFullYear()} Southern Roof Consultants. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link to="/privacy" className="text-sm text-muted-foreground hover:text-accent transition-colors">
-              Privacy Policy
-            </Link>
-            <Link to="/terms" className="text-sm text-muted-foreground hover:text-accent transition-colors">
-              Terms of Service
-            </Link>
+            {[
+              { label: "Privacy Policy", to: "/privacy" },
+              { label: "Terms of Service", to: "/terms" },
+            ].map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className="transition-colors"
+                style={{ fontSize: 12, color: "rgba(255,255,255,0.40)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.70)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.40)")}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

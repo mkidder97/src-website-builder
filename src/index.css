@@ -119,6 +119,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   * {
     @apply border-border;
   }
@@ -236,6 +240,12 @@
 }
 
 @layer utilities {
+  .nav-link-active {
+    border-bottom: 2px solid hsl(var(--accent));
+    padding-bottom: 2px;
+    color: hsl(var(--accent));
+  }
+
   .animate-count {
     animation: countUp 2s ease-out forwards;
   }
