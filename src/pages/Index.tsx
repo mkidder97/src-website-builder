@@ -18,7 +18,7 @@ const Index = () => {
     <Layout>
       <SEO 
         title="Commercial Roof Consulting for Institutional Investors"
-        description="Southern Roof Consultants protects over $3 billion in commercial roofing assets. Expert inspections, construction management, and portfolio intelligence for REITs and property managers."
+        description="Southern Roof Consultants protects over $3B in commercial roofing assets for REITs and institutional property owners across 28 states. Data-driven inspections. Trusted expertise."
         keywords="commercial roof inspection, due diligence inspection, REIT roof management, commercial roofing consultant, roof asset management"
       />
       <HomePageStructuredData />

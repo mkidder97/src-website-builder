@@ -70,8 +70,8 @@ const Projects = () => {
   return (
     <Layout>
       <SEO
-        title="Featured Projects | Southern Roof Consultants"
-        description="Explore our portfolio of commercial roofing projects across industrial, healthcare, government, retail, and more."
+        title="Featured Projects"
+        description="Browse a selection of SRC's commercial roofing inspection and consulting projects across healthcare, industrial, government, retail, and mixed-use portfolios nationwide."
       />
 
       {/* Hero */}
