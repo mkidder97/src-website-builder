@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Building2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useGetStartedModal } from "@/hooks/use-get-started-modal";
 
 export function Hero() {
