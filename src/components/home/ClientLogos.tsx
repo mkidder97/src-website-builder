@@ -13,36 +13,54 @@ const clients = [
 
 export function ClientLogos() {
   return (
-    <section className="bg-background section-padding py-16">
+    <section
+      className="px-4 sm:px-6 lg:px-8 py-14"
+      style={{ background: "hsl(var(--warm-gray))" }}
+    >
       <div className="container-narrow mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-10"
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-            Our track record speaks for itself.
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            We've built lasting relationships with the nation's largest commercial property owners.
+          <p
+            style={{
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase" as const,
+              color: "hsl(var(--muted-foreground) / 0.6)",
+            }}
+          >
+            Trusted by the nation's largest property owners
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-items-center">
+        <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-6 md:gap-x-14 lg:gap-x-16">
           {clients.map((client, index) => (
             <motion.div
               key={client.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="flex items-center justify-center h-16 px-4 w-full"
+              transition={{ duration: 0.4, delay: index * 0.04 }}
             >
-              <div className="text-base md:text-lg font-semibold text-muted-foreground/50 hover:text-muted-foreground/80 transition-colors text-center">
+              <span
+                className="whitespace-nowrap select-none"
+                style={{
+                  fontSize: 14,
+                  fontWeight: 600,
+                  letterSpacing: "0.04em",
+                  color: "hsl(var(--foreground) / 0.28)",
+                  transition: "color 0.3s",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "hsl(var(--foreground) / 0.55)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "hsl(var(--foreground) / 0.28)")}
+              >
                 {client.name}
-              </div>
+              </span>
             </motion.div>
           ))}
         </div>
