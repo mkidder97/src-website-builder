@@ -71,12 +71,12 @@ export function Hero() {
             </Button>
           </motion.div>
 
-          {/* Trust Indicators */}
+          {/* Trust Indicators — hidden on mobile since AuthorityStrip shows them */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-wrap items-start gap-0 mt-12 pt-12 border-t border-white/10"
+            className="hidden md:flex flex-wrap items-start gap-0 mt-12 pt-12 border-t border-white/10"
           >
             <div className="pr-10">
               <p
@@ -93,7 +93,7 @@ export function Hero() {
               </p>
             </div>
             <div
-              className="hidden sm:block self-stretch"
+              className="self-stretch"
               style={{ width: 1, background: "rgba(255,255,255,0.12)", marginRight: 40 }}
             />
             <div className="pr-10">
@@ -111,7 +111,7 @@ export function Hero() {
               </p>
             </div>
             <div
-              className="hidden sm:block self-stretch"
+              className="self-stretch"
               style={{ width: 1, background: "rgba(255,255,255,0.12)", marginRight: 40 }}
             />
             <div>
