@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { GetStartedModal } from "@/components/GetStartedModal";
 import { SampleReportsModal } from "@/components/SampleReportsModal";
-import { ChatWidget } from "@/components/chatbot";
+
 import { ScrollToTop } from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
