@@ -67,7 +67,7 @@ const App = () => (
         </Routes>
         <GetStartedModal />
         <SampleReportsModal />
-        <ChatWidget />
+        
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

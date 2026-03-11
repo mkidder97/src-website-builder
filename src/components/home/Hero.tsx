@@ -49,7 +49,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-gray-300 max-w-2xl mb-8"
+            className="text-base md:text-xl text-gray-300 max-w-2xl mb-6 md:mb-8"
           >
             We protect over $3 billion in commercial roofing assets for institutional investors,
             REITs, and property managers across the nation. Data-driven insights. Trusted
