@@ -39,7 +39,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-6"
+            className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-4 md:mb-6"
           >
             Fiscal Stewards of Your{" "}
             <span className="text-gradient">Roofing Assets</span>
@@ -49,7 +49,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-gray-300 max-w-2xl mb-8"
+            className="text-base md:text-xl text-gray-300 max-w-2xl mb-6 md:mb-8"
           >
             We protect over $3 billion in commercial roofing assets for institutional investors,
             REITs, and property managers across the nation. Data-driven insights. Trusted
@@ -71,12 +71,12 @@ export function Hero() {
             </Button>
           </motion.div>
 
-          {/* Trust Indicators */}
+          {/* Trust Indicators — hidden on mobile since AuthorityStrip shows them */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-wrap items-start gap-0 mt-12 pt-12 border-t border-white/10"
+            className="hidden md:flex flex-wrap items-start gap-0 mt-12 pt-12 border-t border-white/10"
           >
             <div className="pr-10">
               <p
@@ -93,7 +93,7 @@ export function Hero() {
               </p>
             </div>
             <div
-              className="hidden sm:block self-stretch"
+              className="self-stretch"
               style={{ width: 1, background: "rgba(255,255,255,0.12)", marginRight: 40 }}
             />
             <div className="pr-10">
@@ -111,7 +111,7 @@ export function Hero() {
               </p>
             </div>
             <div
-              className="hidden sm:block self-stretch"
+              className="self-stretch"
               style={{ width: 1, background: "rgba(255,255,255,0.12)", marginRight: 40 }}
             />
             <div>
